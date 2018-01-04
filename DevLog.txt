@@ -1,12 +1,10 @@
-<Team Name (without word "team")>
-<Member Bubbles>
-<Member Buttercup>
-<Member Blossom>
-pd <pd#>
+Gwuacamohli
+Clara Mohri
+Wenting Li
+Jessica Wu
+pd 08
 ---------------------
-<Project>
-
-
+Mathematical Utility
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 USAGE:
