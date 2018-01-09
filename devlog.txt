@@ -47,15 +47,14 @@ Wenting :: <Thing member did.>
 Jessica :: <Thing member did.>
 ==============================================================
 2018-01-05
-2018-01-03
 --------------------------------------------------------------
 Clara :: Created Splitter
-Wenting:: Created Spreadsheet
+Wenting :: Created Spreadsheet
 Jessica :: <Thing member did.>
 ==============================================================
 2018-01-08
 --------------------------------------------------------------
 Clara :: 
-Wenting:: Updated Instructions for README.md
-Jessica :: 
+Wenting :: Updated Instructions for README.md
+Jessica :: Created Calculator
 ==============================================================
