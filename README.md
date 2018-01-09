@@ -2,7 +2,8 @@
 ## Clara Mohri, Wenting Li, Jessica Wu
 
 _**General Project Description**_
-  This project functions as a basic mathematical utility. When the user runs the project, user can: 
+
+This project functions as a basic mathematical utility. When the user runs the project, user can: 
 1. Graph a polynomial function in terms of x
   * Change domain and range
   * Request zeroes and intercepts within the viewing window
