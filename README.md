@@ -15,6 +15,14 @@ This project functions as a basic mathematical utility. When the user runs the p
 
 _**Instructions for Running**_
 
+To COMPILE
+$ cd ~/gwuacamohli/codes
+$ javac Driver.java
+
+To RUN
+$ java Driver
+
+@-----------------------------------
 1. Select desired functionality
 	1: Graphing Calculator
 	2: Simple Math Calculator
