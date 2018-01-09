@@ -12,3 +12,8 @@ This project functions as a basic mathematical utility. When the user runs the p
 3. Create a spreadsheet
   * Request sorting based on column/row
   * View statistics for column/row
+
+_**Instructions for Running**_
+
+1. Select desired functionality
+2. Follow instructions in shell…
