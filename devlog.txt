@@ -50,6 +50,12 @@ Jessica :: <Thing member did.>
 2018-01-03
 --------------------------------------------------------------
 Clara :: Created Splitter
-Wenting:: <Thing member did.>
+Wenting:: Created Spreadsheet
 Jessica :: <Thing member did.>
+==============================================================
+2018-01-08
+--------------------------------------------------------------
+Clara :: 
+Wenting:: Updated Instructions for README.md
+Jessica :: 
 ==============================================================
