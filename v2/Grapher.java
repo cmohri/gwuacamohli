@@ -14,7 +14,7 @@ public class Grapher
 
     //default constructor
     public Grapher(){
-	xmax = 9;
+	xmax = 10;
 	ymax = 25;
 	xmin = 0;
 	ymin = 0;
@@ -77,98 +77,26 @@ public class Grapher
         return foo;
     }
 
-    //User is asked what degree
-    public void degree(){
-	System.out.print("What degree equation?");
-	int degree = Keyboard.readInt();
-	System.out.println("You've chosen degree: "+ degree);
-	if (degree == 0){
-	    System.out.print("Equation: y = ");
-	    double a = Keyboard.readDouble();
-	    grapher(a);
-	}
-	else if (degree == 1){
-	    System.out.println("Equation in the form y = ax + b");
-	    System.out.print("a: ");
-	    double a = Keyboard.readDouble();
-	    System.out.print("b: ");
-	    int b = Keyboard.readInt();
-	    System.out.println("Equation: y = " + a + "x + " + b);
-	    grapher(a, b); 
-	}
-	else if (degree == 2){
-	    System.out.println("Equation in the form y = ax^2 + bx + c");
-	    System.out.print("a: ");
-            int a = Keyboard.readInt();
-            System.out.print("b: ");
-            int b = Keyboard.readInt();
-	    System.out.print("c: ");
-	    int c = Keyboard.readInt();
-            System.out.println("Equation: y = " + a + "x^2 + " + b + "x + " + c);
-            grapher(a, b, c);
-	}
-	else if (degree == 3){
-	    System.out.println("Equation in the form y = ax^3 + bx^2 + cx + d");
-            System.out.print("a: ");
-            int a = Keyboard.readInt();
-            System.out.print("b: ");
-            int b = Keyboard.readInt();
-            System.out.print("c: ");
-            int c = Keyboard.readInt();
-	    System.out.print("d: ");
-            int d = Keyboard.readInt();
-            System.out.println("Equation: y = " + a + "x^3 + " + b + "x^2 + " + c + "x + " + d);
-            grapher(a, b, c, d );
+    //method graphs.
+    public void grapher(){
+	System.out.println("Enter desired equation. \n\t1. Must be in terms of x\n\t2. Be careful with spaces");
+	System.out.print("y= ");
+	String eq = Keyboard.readString();
+	for (int x = xmin; x < xmax; x++){
+	    int y = Parser.input(eq, x);
+	    if (y < ymax && y >= ymin){
+		_graph[ymax-1-y][x] = " •";
+	    }
 	}
 	System.out.println(this);
     }
 
-    public void grapher(double a){
-	for (int x = xmin; x < xmax; x++){
-            int y = (int)a ;
-            if (y < ymax && y >= ymin){
-                _graph[ymax- 1- y][x] = " •";
-            }
-        }
-    }
-
-    //graphing method inputs asterisks to indicate points on a function
-    //for linear functions
-    public void grapher(double a, double b){
-	for (int x = xmin ; x < xmax ; x++){
-	    int y = (int)(a*x + b) ;
-	    if (y < ymax && y >= ymin){
-		_graph[ymax- 1- y][x] = " •";
-	    }
-	}
-    }
-
-    //graphing method inputs asterisks to indicate points on a function
-    //for quadratic functions
-    public void grapher(double a, double b, double c){
-	for (int x = xmin; x < xmax; x++){
-            int y = (int)(a*x*x + b*x + c) ;
-            if (y < ymax && y >= ymin){
-                _graph[ymax- 1- y][x] = " •";
-            }
-        }
-    }
-
-    //for third degree functions
-    public void grapher(double a, double b, double c, double d){
-        for (int x = xmin; x < xmax; x++){
-            int y = (int)(a*x*x*x + b*x*x + c*x + d) ;
-            if (y < ymax && y >= ymin){
-                _graph[ymax- 1- y][x] = " •";
-            }
-        }
-    }
 
     public static void main (String[] args){
 
 	Grapher foo = new Grapher();
 	//System.out.println(foo);
-	foo.degree();
+	foo.grapher();
 	//System.out.println(foo);
 
     }
