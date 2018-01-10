@@ -119,11 +119,11 @@ public class Parser{
     }
 
     public static void main (String[] args){
-	
+	/*
 	String eq1 = "3x^3+x^2+3";
 	System.out.println(eq1);
 	int finalval = input(eq1, -1);
-	System.out.print("input -3: ");
+	System.out.print("input -1: ");
 	System.out.println(finalval);
 
 	String eq2= "3x^2";
@@ -131,28 +131,10 @@ public class Parser{
 	System.out.print("input 0: ");
 	System.out.println(input(eq2, 0));
 
-	String eq3= "5+5";
+	String eq3= "5+5+5";
 	System.out.println(eq3);
 	System.out.print("input 0: ");
 	System.out.println(input(eq3, 0));
-
-	/*
-	String eq = "3x^2";
-	System.out.println("Term: " + eq);
-	System.out.println("has x? " + hasX(eq));
-	System.out.println("degree: " +findDeg("3x^2"));
-	System.out.println("coeff: " + findCoeff("3x^2"));
-	System.out.println("input 3: " + termInput("3x^2", 3)); 
-
-	String eq2 = "2x^10";
-	System.out.println(eq2);
-	System.out.println(findCoeff(eq2));
-	System.out.println(findDeg(eq2));
-	System.out.println(termInput(eq2, 2));
-	
-	System.out.println("Term: 3");
-	System.out.println("degree: " + findDeg("3"));
-	System.out.println("coeff: " + findCoeff("3"));
 	*/
 
     }
