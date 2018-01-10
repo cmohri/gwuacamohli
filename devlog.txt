@@ -63,7 +63,7 @@ Jessica :: Created Calculator
 
 2018-01-09
 --------------------------------------------------------------
-Clara :: 
+Clara :: Changed name of Splitter.java to Parser.java
 Wenting :: Expanded on Spreadsheet (user inputs)
 Jessica :: 
 ==============================================================
