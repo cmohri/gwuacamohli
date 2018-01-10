@@ -43,18 +43,27 @@ LESSONS LEARNED
 2018-01-03
 --------------------------------------------------------------
 Clara :: Created Grapher
-Wenting :: <Thing member did.>
-Jessica :: <Thing member did.>
+Wenting :: Created proposal
+Jessica :: 
 ==============================================================
+
 2018-01-05
 --------------------------------------------------------------
 Clara :: Created Splitter
 Wenting :: Created Spreadsheet
-Jessica :: <Thing member did.>
+Jessica :: 
 ==============================================================
+
 2018-01-08
 --------------------------------------------------------------
 Clara :: 
 Wenting :: Updated Instructions for README.md
 Jessica :: Created Calculator
+==============================================================
+
+2018-01-09
+--------------------------------------------------------------
+Clara :: 
+Wenting :: Expanded on Spreadsheet (user inputs)
+Jessica :: 
 ==============================================================
