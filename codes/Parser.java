@@ -131,7 +131,7 @@ public class Parser{
 	System.out.print("input 0: ");
 	System.out.println(input(eq2, 0));
 
-	String eq3= "5";
+	String eq3= "5+5";
 	System.out.println(eq3);
 	System.out.print("input 0: ");
 	System.out.println(input(eq3, 0));
