@@ -64,6 +64,8 @@ Jessica :: Created Calculator
 2018-01-09
 --------------------------------------------------------------
 Clara :: Changed name of Splitter.java to Parser.java
+         Parser.java was improved so that now any String equation can be evaluated for any x.
+         However, it is only limited to polynomials that only add their terms
 Wenting :: Expanded on Spreadsheet (user inputs)
 Jessica :: 
 ==============================================================
