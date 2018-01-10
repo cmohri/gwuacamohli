@@ -7,4 +7,6 @@ To-do list:
 1. Augment the functionality of Parser.java so that it also can evaluate substraction, multiplication, and division.
 2. Modify Grapher.java so that it's graphing algorithm uses Parser.java's functionality.
 3. Using Parser.java, create Calculator.java
-4. Write Table.java so that it 
+4. Write Table.java
+5. Augment Spreadsheet.java...
+6. Add functionality to Grapher so that it can find zeroes (within a certain domain only) and x/y intercepts
