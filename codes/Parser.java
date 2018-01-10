@@ -1,3 +1,4 @@
+//Gwuacamohli
 //Clara Mohri
 
 import java.util.ArrayList;
@@ -7,8 +8,8 @@ public class Parser{
     //turns a string array into an ArrayList.
     //this makes it easier to work with array
     //returns ArrayList
-    public static ArrayList toAL(String[] ar){
-	ArrayList ret = new ArrayList();
+    public static ArrayList<String> toAL(String[] ar){
+	ArrayList<String> ret = new ArrayList();
 	for (String i: ar){
 	    ret.add(i);
 	}
@@ -16,22 +17,11 @@ public class Parser{
     }
 
     //splits based on +, -, /, *
-    public static ArrayList makeAL(String eq){
+    public static ArrayList<String> makeAL(String eq){
 	eq = eq.replaceAll("[+]" , " + ");
 	String[] splitted = eq.split(" +");
 	ArrayList tester = toAL(splitted);
 	return tester;
-    }
-
-    //turns the numbers in the array into numbers
-    public static void numberize(ArrayList eq){
-	for (int i = 0; i < eq.size(); i++ ){
-	    Object here = eq.get(i);
-	    System.out.println(here);
-	    if (here instanceof String){
-		
-	    }
-	}
     }
 
     //finds the degree of every part of the equation
@@ -67,66 +57,103 @@ public class Parser{
 
     //precondition: term has x
     //evaluates with an x value
-    public static int input(String term, int xval){
-	int retVal = xval;
-	int deg = findDeg(term);
-	while (deg > 1){
-	    retVal *= xval;
-	    deg -= 1;
+    public static int termInput(String term, int xval){
+	if (hasX(term)){
+	    int retVal = xval;
+	    int deg = findDeg(term);
+	    while (deg > 1){
+		retVal *= xval;
+		deg -= 1;
+	    }
+	    retVal *= findCoeff(term);
+	    return retVal;
 	}
-	retVal *= findCoeff(term);
+	else return findCoeff(term);
+    }
+
+    //precondition: ArrayList with terms in x
+    //postcondition: all the terms are evaluated for a certain x
+    //               Because the ArrayList now contains both Strings and ints,
+    //               a new ArrayList is created and returned to allow this
+    public static ArrayList eqCalc(ArrayList<String> eq, int xval)  {
+	ArrayList eval = new ArrayList();
+
+	for (int i = 0; i < eq.size(); i++){
+	    String item = eq.get(i);
+	    if (hasX( item )){
+		int val = termInput( item , xval);
+		eval.add(val);
+	    }
+	    else { 
+		try {
+		    int val = termInput(item, xval);
+		    eval.add(val);
+		}
+		catch(Exception e)   {  eval.add( item );}
+	    }
+	}
+	return eval;
+    }
+
+    //precondition: an ArrayList with only ints and operations
+    //postcondition: evaluated to one int, which is returned
+    public static int eval(ArrayList nums){
+	int retVal = 0;
+	for (int i = 0; i < nums.size(); i++){
+	    if (nums.get(i) instanceof Integer){
+		int x = (int)nums.get(i);
+		retVal += x;
+	    }
+	}
 	return retVal;
     }
 
 
+    //precondition: an equation in terms of x is inputted as a String
+    //              an xval is inputted that must be calcualted for the equation
+    //postcondition: this value is returned
+    public static int input(String eq, int xval){
+	ArrayList<String> ar = makeAL(eq);
+	ArrayList calcd = eqCalc(ar, xval);
+	return eval( calcd);
+    }
+
     public static void main (String[] args){
-	//testing split method
-	/*	String[] ar = "3.25 + 3".split(" ");
-	System.out.println(toAL(ar));
-	String foo = "33+3+7.0";	
-	foo = foo.replaceAll("[+]", " + ");
-	System.out.println(foo);
-	String[] test = foo.split(" +");
-	ArrayList tester = toAL(test);
-	System.out.println(tester);
-
-	numberize(tester);
-
-	String eq = "3x^2";
-	System.out.println("index of carrot " + eq.indexOf("^"));
-	eq = eq.substring(0, 2);
-	System.out.println(eq);
-	System.out.println("index of x " + eq.indexOf("x"));
-	eq = eq.substring(0, 1);
-        System.out.println(eq);
-	Integer inta = Integer.parseInt("3");
-	int degree = 2;
-
-	System.out.println(inta);
-	inta += 4;*/
-	//System.out.println(split("3x^a+2")); 
 	
-	String eq1 = "3x^21+x^3";
+	String eq1 = "3x^3+x^2+3";
 	System.out.println(eq1);
-	System.out.println(makeAL(eq1));
-	
+	int finalval = input(eq1, -1);
+	System.out.print("input -3: ");
+	System.out.println(finalval);
+
+	String eq2= "3x^2";
+	System.out.println(eq2);
+	System.out.print("input 0: ");
+	System.out.println(input(eq2, 0));
+
+	String eq3= "5";
+	System.out.println(eq3);
+	System.out.print("input 0: ");
+	System.out.println(input(eq3, 0));
+
+	/*
 	String eq = "3x^2";
 	System.out.println("Term: " + eq);
 	System.out.println("has x? " + hasX(eq));
 	System.out.println("degree: " +findDeg("3x^2"));
 	System.out.println("coeff: " + findCoeff("3x^2"));
-	System.out.println("input 3: " + input("3x^2", 3)); 
+	System.out.println("input 3: " + termInput("3x^2", 3)); 
 
 	String eq2 = "2x^10";
 	System.out.println(eq2);
 	System.out.println(findCoeff(eq2));
 	System.out.println(findDeg(eq2));
-	System.out.println(input(eq2, 2));
+	System.out.println(termInput(eq2, 2));
 	
 	System.out.println("Term: 3");
 	System.out.println("degree: " + findDeg("3"));
 	System.out.println("coeff: " + findCoeff("3"));
-	
+	*/
 
     }
     
