@@ -69,3 +69,11 @@ Clara :: Changed name of Splitter.java to Parser.java
 Wenting :: Expanded on Spreadsheet (user inputs)
 Jessica :: 
 ==============================================================
+
+2018-01-10
+--------------------------------------------------------------
+Clara :: Implemented Parser in Grapher so that Grapher now takes a String input for a polynomial
+          Updated user interface so that it is in compliance with new functionality.
+Wenting :: 
+Jessica :: 
+==============================================================
