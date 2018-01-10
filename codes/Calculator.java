@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class Calculator {
     //instance vars
     double final_output;
-    Splitter split = new Splitter();
+    Parser parse = new Parser();
 
     //default constructor
     //if select calulcate, 
     public ArrayList<Object> Calculator(String expression){
-	ArrayList alInput = split.toAl(expression);
-	split.makeAl(
+	ArrayList alInput = parse.toAl(expression);
+	parse.makeAl();
     }//end default constructor
     
     //~~~~~~~~~~~~~~~~~~~~~~ BASIC OPERATIONS~~~~~~~~~~~~~~~~~~~~~~
