@@ -2,7 +2,7 @@
 
 import java.util.ArrayList;
 
-public class Splitter{
+public class Parser{
 
     //turns a string array into an ArrayList.
     //this makes it easier to work with array
