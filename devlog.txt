@@ -74,6 +74,8 @@ Jessica ::
 --------------------------------------------------------------
 Clara :: Implemented Parser in Grapher so that Grapher now takes a String input for a polynomial
           Updated user interface so that it is in compliance with new functionality.
+          Augmented Parser so that it can also take into consideration subtraction vs. addition
+          Implemented this augmentation in Grapher, so that polynomials with negative signs can also be graphed
 Wenting :: 
 Jessica :: 
 ==============================================================
