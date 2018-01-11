@@ -29,7 +29,7 @@ public class Grapher
 	ymin = 0;
 	xmax = domain;
 	ymax = range;
-	_graph = new String[ymax -ymin+2 ][xmax - xmin+2 ];
+	_graph = new String[ymax -ymin+1 ][xmax - xmin+1 ];
 	filler();
     }
 
@@ -46,8 +46,14 @@ public class Grapher
 
     //filler method fills _graph with spaces 
     public void filler(){
-	for (int i = 0; i <=  ymax; i++){
+	/*for (int i = 0; i <=  ymax; i++){
 	    for (int x = 0; x <= xmax; x++){
+		_graph[i][x] = "  ";
+	    }
+	    }*/
+	
+	for (int i = 0; i < _graph.length; i++){
+	    for (int x = 0; x < _graph[i].length; x++){
 		_graph[i][x] = "  ";
 	    }
 	}
@@ -104,7 +110,7 @@ public class Grapher
 
     public static void main (String[] args){
 
-	Grapher foo = new Grapher(/*-10,10, -10,10*/);
+	Grapher foo = new Grapher();
 	//System.out.println(foo);
 	foo.grapher();
 	//System.out.println(foo);

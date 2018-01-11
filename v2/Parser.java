@@ -20,6 +20,7 @@ public class Parser{
     public static ArrayList<String> makeAL(String eq){
 	//this also works to split with minus signs... 
 	eq = eq.replaceAll("[+]" , " + ");
+	eq = eq.replaceAll("[-]", " - ");
 	String[] splitted = eq.split(" +");	
 	ArrayList tester = toAL(splitted);
 	return tester;
@@ -111,7 +112,6 @@ public class Parser{
 		}
 		else if (i > 0 && nums.get(i-1).equals("-")){
 		    retVal -= x;
-
 		}
 		else {
 		    retVal += x;
@@ -133,6 +133,7 @@ public class Parser{
     }
 
     public static void main (String[] args){
+
 	/*
 	String eq1 = "3x^3+x^2+3";
 	System.out.println(eq1);
