@@ -1,6 +1,8 @@
 /* to-do
 1. add user input
 2. finish Calulcator
+3. create method to parse by * and / --> return output into a new arraylist 
+to evaluate first (PEMDAS) and then parse + evaluate by +/-
 */
 
 import java.util.ArrayList;
@@ -10,9 +12,15 @@ public class Calculator {
     double final_output;
     Parser parse = new Parser();
 
+    //~~~~~~~~~~~~~~~~~~~~~~PARSING METHODS~~~~~~~~~~~~~~~~~~~~~~~~
+    //parses by *
+    //parses by /
+    
+
+
     //default constructor
     //if select calulcate, 
-    public ArrayList<Object> Calculator(String expression){
+    public ArrayList<Object> conversion(String expression){
 	ArrayList alInput = parse.toAl(expression);
 	parse.makeAl();
     }//end default constructor
