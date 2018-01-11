@@ -18,8 +18,9 @@ public class Parser{
 
     //splits based on +, -, /, *
     public static ArrayList<String> makeAL(String eq){
+	//this also works to split with minus signs... 
 	eq = eq.replaceAll("[+]" , " + ");
-	String[] splitted = eq.split(" +");
+	String[] splitted = eq.split(" +");	
 	ArrayList tester = toAL(splitted);
 	return tester;
     }
@@ -96,13 +97,26 @@ public class Parser{
     }
 
     //precondition: an ArrayList with only ints and operations
+    //              evaluates if addition/substraction is necesary
     //postcondition: evaluated to one int, which is returned
     public static int eval(ArrayList nums){
 	int retVal = 0;
 	for (int i = 0; i < nums.size(); i++){
 	    if (nums.get(i) instanceof Integer){
+
 		int x = (int)nums.get(i);
-		retVal += x;
+		if (i >0 && nums.get(i-1).equals("+")){
+		    retVal += x;
+
+		}
+		else if (i > 0 && nums.get(i-1).equals("-")){
+		    retVal -= x;
+
+		}
+		else {
+		    retVal += x;
+
+		}
 	    }
 	}
 	return retVal;
