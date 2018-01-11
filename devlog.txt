@@ -51,14 +51,14 @@ Jessica ::
 --------------------------------------------------------------
 Clara :: Created Splitter
 Wenting :: Created Spreadsheet
-Jessica :: 
+Jessica :: Created Calculator
 ==============================================================
 
 2018-01-08
 --------------------------------------------------------------
 Clara :: 
 Wenting :: Updated Instructions for README.md
-Jessica :: Created Calculator
+Jessica :: Created Calculator template 
 ==============================================================
 
 2018-01-09
@@ -67,7 +67,7 @@ Clara :: Changed name of Splitter.java to Parser.java
          Parser.java was improved so that now any String equation can be evaluated for any x.
          However, it is only limited to polynomials that only add their terms
 Wenting :: Expanded on Spreadsheet (user inputs)
-Jessica :: 
+Jessica :: Utilized Parser methods in Calculator
 ==============================================================
 
 2018-01-10
@@ -78,4 +78,11 @@ Clara :: Implemented Parser in Grapher so that Grapher now takes a String input 
           Implemented this augmentation in Grapher, so that polynomials with negative signs can also be graphed
 Wenting :: 
 Jessica :: 
+==============================================================
+
+2018-01-11
+--------------------------------------------------------------
+Clara :: 
+Wenting :: 
+Jessica :: Created a parsing method specific for Calculator's needs instead of using Parser's. Calculator can evaluate basic mathetmatical expressions, but is unable to understand exponents (possibly use some Parser methods to solve this??)
 ==============================================================
