@@ -1,4 +1,7 @@
-//Jessica Wu
+/* to-do
+1. add user input
+2. finish Calulcator
+*/
 
 import java.util.ArrayList;
 
@@ -18,55 +21,55 @@ public class Calculator {
     //add()
     //implemented if a "+" is spotted in parsed input 
     //the value at the next index is added to final_output
-    public void add(){
-	/* IMPLEMENTATION */
+    public void add(ArrayList<Object> parsed, int index){
+	final_output += parsed[index];
     }
     
     //subtract()
     //implemented if a "-" is spotted in parsed input 
     //the value at the next index is subtracted from final_output
-    public void subtract(){
-       /* IMPLEMENTATION */
+    public void subtract(ArrayList<Object> parsed, int index){
+	final_output -= parsed[index];
     }//end subtract() 
     
     //multiply()
     //implemented if a "*" is spotted in parsed input 
     //the value at the next index is multiplied to final_output
-    public void multiply(){
-	/* IMPLEMENTATION */
+    public void multiply(ArrayList<Object> parsed, int index){
+	final_output *= parsed[index];
     }//end multiply()
     
     //divide()
     //implemented if a "/" is spotted in parsed input 
     //the final_output is divided by the value at the next index 
-    public void divide(){
-       /* IMPLEMENTATION */
+    public void divide(ArrayList<Object> parsed, int index){
+	final_output /= parsed[index];
     }//end divide()
     
     //exponent()
     //implemented if a "^" is spotted in parsed input
     //the final_project is raised to the power of the value of the next index 
-    public void exponent(){
-       /* IMPLEMENTATION */
+    public void exponent(ArrayList<Object> parsed, int index){
+	final_output = final_output ** parsed[index];
     }//end exponent()
     
     //Calculator(ArrayList<Object> parsedinput)
-    public void Calculator(ArrayList<Object> parsedinput){
-	/* IMPLEMENTATION */
+    public double Calculator(ArrayList<Object> parsedinput){
+	final_output = 0;
+
+	//for loop goes through entire parsed array
+
+	//if "+" --> add() the value at i + 1
+	//if "-" --> subtract() the value at i + 1
+	//if "*" --> multiply() the value at i + 1
+	//if "/" --> divide() the value at i + 1
+	//if "^" --> exponent() the value at i + 1
+ 
+	return final_output;
     }//end Calculator
     
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    //~~~~~~~~~~~~~~~~~~~~~ GRAPH CALCULATIONS ~~~~~~~~~~~~~~~~~~~~~
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    //~~~~~~~~~~~~~~~~~~~~~ TABLE STATISTICS ~~~~~~~~~~~~~~~~~~~~~~~
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
     public static void main (String[] args){
-	//ArrayList<Object> test1 = new ArrayList<Object>(1,"+",5,"-",2,"*",10,"/",10,"^",2);
-	ArrayList<Object> test2 = new ArrayList<Object>();
-	test2.add(2);
+	
     }
     
 }
