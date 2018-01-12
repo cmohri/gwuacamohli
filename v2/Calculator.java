@@ -9,8 +9,12 @@ import java.lang.Math;
 public class Calculator {
 
     //~~~~~~~~~~~~~~~~~~~~~~PARSING METHOD~~~~~~~~~~~~~~~~~~~~~~~~~
-    public static String[] parse(String preparsing){
-	String[] output = preparsing.split(" * "); //somehow parses +,-,*,/ ?
+    public static String[] parse(String expression){
+	expression = expression.replaceAll("[+]" , " + ");
+  	expression = expression.replaceAll("[-]", " - ");
+	expression = expression.replaceAll("[*]" , " * ");
+  	expression = expression.replaceAll("[/]", " / ");
+	String[] output = expression.split(" * "); //somehow parses +,-,*,/ ?
 	return output;
     }//end of parse()
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,9 +32,9 @@ public class Calculator {
     }
     
     //Calculator
-    public static int Calculator(String expression){
+    public static double Calculator(String expression){
 
-	int final_output;
+	double final_output;
 	String[] temparray;
 	int oneafter;
 	int num;
@@ -94,9 +98,9 @@ public class Calculator {
     }//end Calculator
 
     public static void calculate(){
-	System.out.println("Enter a math expression. \n\t1. Place a space between each operation (+,-,*,/). Make sure you don't have an extra space at the end! \n\t2. If you wish to use exponents, don't include spaces between the base, '^', and exponent. For example: 3^2"); 
+	System.out.println("Enter a math expression. \n\t1. Acceptable operations are: +, - , * , / , ^  \n\t2. PEMDAS rules are not yet followed"); 
 	String expression = Keyboard.readString();
-	int answer = Calculator(expression);
+	double answer = Calculator(expression);
 	System.out.println(answer);
     }
     
