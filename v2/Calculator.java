@@ -1,72 +1,88 @@
-//Jessica Wu
+/* to-do
+   1. add user input
+   2. create method to parse by * and / --> return output into a new arraylist 
+   to evaluate first (PEMDAS) and then parse + evaluate by +/-
+   3. what to do w/ exponents??? --> use parser methods??
+*/
 
 import java.util.ArrayList;
 
 public class Calculator {
-    //instance vars
-    double final_output;
-    Parser parse = new Parser();
 
-    //default constructor
-    //if select calulcate, 
-    public ArrayList<Object> Calculator(String expression){
-	ArrayList alInput = parse.toAl(expression);
-	parse.makeAl();
-    }//end default constructor
-    
-    //~~~~~~~~~~~~~~~~~~~~~~ BASIC OPERATIONS~~~~~~~~~~~~~~~~~~~~~~
-    //add()
-    //implemented if a "+" is spotted in parsed input 
-    //the value at the next index is added to final_output
-    public void add(){
-	/* IMPLEMENTATION */
-    }
-    
-    //subtract()
-    //implemented if a "-" is spotted in parsed input 
-    //the value at the next index is subtracted from final_output
-    public void subtract(){
-       /* IMPLEMENTATION */
-    }//end subtract() 
-    
-    //multiply()
-    //implemented if a "*" is spotted in parsed input 
-    //the value at the next index is multiplied to final_output
-    public void multiply(){
-	/* IMPLEMENTATION */
-    }//end multiply()
-    
-    //divide()
-    //implemented if a "/" is spotted in parsed input 
-    //the final_output is divided by the value at the next index 
-    public void divide(){
-       /* IMPLEMENTATION */
-    }//end divide()
-    
-    //exponent()
-    //implemented if a "^" is spotted in parsed input
-    //the final_project is raised to the power of the value of the next index 
-    public void exponent(){
-       /* IMPLEMENTATION */
-    }//end exponent()
+    //~~~~~~~~~~~~~~~~~~~~~~PARSING METHOD~~~~~~~~~~~~~~~~~~~~~~~~~
+    public static String[] parse(String preparsing){
+	String[] output = preparsing.split(" * "); //somehow parses +,-,*,/ ?
+	return output;
+    }//end of parse()
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     //Calculator(ArrayList<Object> parsedinput)
-    public void Calculator(ArrayList<Object> parsedinput){
-	/* IMPLEMENTATION */
+    public static double Calculator(String expression){
+
+	double final_output = 0;
+	String[] temparray;
+	int oneafter;
+	int num;
+
+	temparray = parse(expression);
+	
+	// for (int i =0;i < temparray.length;i++){
+	//     System.out.println(temparray[i]);
+	// }
+	
+	//for loop goes through entire parsed array
+	for (int i = 0; i < temparray.length; i++){
+	    //if "+" --> add() the value at i + 1
+	    if (temparray[i].equals("+")){
+		//System.out.println("plus spotted");
+		oneafter = i + 1;
+		num = Integer.parseInt(temparray[oneafter]);
+		final_output += num;
+	    }
+	    //if "-" --> subtract() the value at i + 1
+	    if (temparray[i].equals("-")){
+		//System.out.println("minus spotted");
+		oneafter = i + 1;
+		num = Integer.parseInt(temparray[oneafter]);
+		final_output -= num;
+	    }
+	    //if "*" --> multiply() the value at i + 1
+	    if (temparray[i].equals("*")){
+	     	//System.out.println("mult spotted");
+		oneafter = i + 1;
+		num = Integer.parseInt(temparray[oneafter]);
+		final_output *= num;
+	    }
+	    //if "/" --> divide() the value at i + 1
+	    if (temparray[i].equals("/")){
+	      	//System.out.println("divide spotted");
+		oneafter = i + 1;
+		num = Integer.parseInt(temparray[oneafter]);
+		final_output /= num;
+	    }
+	}
+
+	return final_output;
     }//end Calculator
     
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    //~~~~~~~~~~~~~~~~~~~~~ GRAPH CALCULATIONS ~~~~~~~~~~~~~~~~~~~~~
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    //~~~~~~~~~~~~~~~~~~~~~ TABLE STATISTICS ~~~~~~~~~~~~~~~~~~~~~~~
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
     public static void main (String[] args){
-	//ArrayList<Object> test1 = new ArrayList<Object>(1,"+",5,"-",2,"*",10,"/",10,"^",2);
-	ArrayList<Object> test2 = new ArrayList<Object>();
-	test2.add(2);
+
+	/* // parse() test
+	   String[] finalarray;
+	
+	   finalarray = parse("2 + 1 * 5");
+	       
+	   for (int i =0;i < finalarray.length;i++){
+	   System.out.println(finalarray[i]);
+	   }
+	*/
+
+	System.out.println(Calculator("2 + 1 - 5 * 10 / 10"));
+	System.out.println(Calculator("2 * 1 + 5 * 10 - 10"));
+	System.out.println(Calculator("2 - 1 * 5 - 10 / 10"));
+	System.out.println(Calculator("2 / 1 - 5 * 10 / 10"));
+
+	
     }
     
 }
