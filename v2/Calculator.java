@@ -1,10 +1,10 @@
 /* to-do
-   1. add user input
-   2. create method to parse by * and / --> return output into a new arraylist 
+   1. create method to parse by * and / --> return output into a new arraylist 
    to evaluate first (PEMDAS) and then parse + evaluate by +/-
-   3. what to do w/ exponents??? --> use parser methods??
+   2. what to do w/ exponents??? --> use parser methods??
 */
 
+import cs1.Keyboard;
 import java.util.ArrayList;
 
 public class Calculator {
@@ -16,7 +16,7 @@ public class Calculator {
     }//end of parse()
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    //Calculator(ArrayList<Object> parsedinput)
+    //Calculator
     public static double Calculator(String expression){
 
 	double final_output = 0;
@@ -25,6 +25,7 @@ public class Calculator {
 	int num;
 
 	temparray = parse(expression);
+	final_output = Integer.parseInt(temparray[0]);
 	
 	// for (int i =0;i < temparray.length;i++){
 	//     System.out.println(temparray[i]);
@@ -77,12 +78,16 @@ public class Calculator {
 	   }
 	*/
 
-	System.out.println(Calculator("2 + 1 - 5 * 10 / 10"));
-	System.out.println(Calculator("2 * 1 + 5 * 10 - 10"));
-	System.out.println(Calculator("2 - 1 * 5 - 10 / 10"));
-	System.out.println(Calculator("2 / 1 - 5 * 10 / 10"));
+	// System.out.println(Calculator("2 + 1 - 5 * 10 / 10"));
+	// System.out.println(Calculator("2 * 1 + 5 * 10 - 10"));
+	// System.out.println(Calculator("2 - 1 * 5 - 10 / 10"));
+	// System.out.println(Calculator("2 / 1 - 5 * 10 / 10"));
+	//	System.out.println(Calculator("3+1"));
 
-	
+	Calculator foo = new Calculator();
+	System.out.println("Enter a math expression. \n\t1. No exponents \n\t2. Place a space between each operation (+,-,*,/). Make sure you don't have an extra space at the end!"); 
+	String expression = Keyboard.readString();
+	System.out.println(foo.Calculator(expression));
     }
     
 }
