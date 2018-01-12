@@ -89,3 +89,10 @@ Clara ::
 Wenting :: 
 Jessica :: Created a parsing method specific for Calculator's needs instead of using Parser's. Created method to find base number to evaluate exponents. Fixed issues with spaces in user input. Calculator can evaluate basic mathematical expressions, even on doubles (but doesn't follow rules of PEMDAS) & takes in user input.
 ==============================================================
+
+2018-01-12
+--------------------------------------------------------------
+Clara :: 
+Wenting :: 
+Jessica :: Calculator now has a while loop to keep it running (allows user to calculate more than one expression)
+==============================================================
