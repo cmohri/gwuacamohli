@@ -28,7 +28,7 @@ public class Calculator {
     }
     
     //Calculator
-    public static double Calculator(String expression){
+    public static int Calculator(String expression){
 
 	int final_output;
 	String[] temparray;
@@ -92,6 +92,13 @@ public class Calculator {
 
 	return final_output;
     }//end Calculator
+
+    public static void calculate(){
+	System.out.println("Enter a math expression. \n\t1. Place a space between each operation (+,-,*,/). Make sure you don't have an extra space at the end! \n\t2. If you wish to use exponents, don't include spaces between the base, '^', and exponent. For example: 3^2"); 
+	String expression = Keyboard.readString();
+	int answer = Calculator(expression);
+	System.out.println(answer);
+    }
     
     public static void main (String[] args){
 
@@ -109,14 +116,10 @@ public class Calculator {
 	// System.out.println(Calculator("2 * 1 + 5 * 10 - 10"));
 	// System.out.println(Calculator("2 - 1 * 5 - 10 / 10"));
 	// System.out.println(Calculator("2 / 1 - 5 * 10 / 10"));
-	//	System.out.println(Calculator("3+1"));
+	// System.out.println(Calculator("3+1")); //error
 
 	Calculator foo = new Calculator();
-	System.out.println("Enter a math expression. \n\t1. Place a space between each operation (+,-,*,/). Make sure you don't have an extra space at the end! \n\t2. If you wish to use exponents, don't include spaces between the base, '^', and exponent. For example: 3^2"); 
-	String expression = Keyboard.readString();
-	//int deg = Parser.findDeg(expression);
-	//System.out.println(deg);
-	System.out.println(foo.Calculator(expression));
+	foo.calculate();
+	//System.out.println(foo.Calculator(expression));
     }
-    
 }
