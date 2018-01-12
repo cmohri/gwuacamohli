@@ -18,11 +18,11 @@ _**Instructions for Running**_
 To COMPILE
 ~~~~
 $ cd ~/gwuacamohli/codes
-$ javac Driver.java
+$ javac Woo.java
 ~~~~
 To RUN
 ~~~~
-$ java Driver
+$ java Woo
 ~~~~
 @-----------------------------------
 1. Select desired functionality
