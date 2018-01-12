@@ -10,7 +10,7 @@ Mathematical Utility
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- Being able to take a String input and convert it into something that the computer can understand and input x values into.
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -26,7 +26,7 @@ MID-DEVELOPMENT DESIGN CHANGES
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- Somehow, saying String.split(" + ") also splits based on the " - " (subtraction) sign. Despite consulting the Java API for the split method, there seems to be no explanation for this.
 
 
  ______   ______   __   __   __       ______   _______     
@@ -42,14 +42,14 @@ LESSONS LEARNED
 
 2018-01-03
 --------------------------------------------------------------
-Clara :: Created Grapher
+Clara :: Created Grapher. Several overloaded methods allow the user to choose the degree of the equation to be graphed, and then input coefficients for each degree. Limitted to adding polynomials, and domain/range cannot be changed.
 Wenting :: Created proposal
 Jessica :: 
 ==============================================================
 
 2018-01-05
 --------------------------------------------------------------
-Clara :: Created Splitter
+Clara :: Created Splitter (now Parser). It is able to split a polynomial equation based on plus signs. It can identify coefficients, degrees, and whether a term has an "x" value, once separated from the rest of the equation. 
 Wenting :: Created Spreadsheet
 Jessica :: Created Calculator
 ==============================================================
