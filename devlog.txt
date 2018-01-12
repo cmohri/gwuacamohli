@@ -66,7 +66,9 @@ Jessica :: Created Calculator template
 Clara :: Changed name of Splitter.java to Parser.java
          Parser.java was improved so that now any String equation can be evaluated for any x.
          However, it is only limited to polynomials that only add their terms
-Wenting :: Expanded on Spreadsheet (user inputs)
+Wenting :: Began creating the skeleton for Spreadsheet.java 
+            Wrote codes for the constructor, newTable() (helper function to initialize any Spreadsheet), toString()
+            Augmented Spreadsheet such that user is now able to fill in the generated table
 Jessica :: Utilized Parser methods in Calculator
 ==============================================================
 
@@ -76,7 +78,8 @@ Clara :: Implemented Parser in Grapher so that Grapher now takes a String input 
           Updated user interface so that it is in compliance with new functionality.
           Augmented Parser so that it can also take into consideration subtraction vs. addition
           Implemented this augmentation in Grapher, so that polynomials with negative signs can also be graphed
-Wenting :: 
+Wenting :: Augmented user experience through incorporating texts and directions in Spreadsheet to guide the user
+            Augmented Spreadsheet so that it can now offer functionalities such setting or removing a value at a slot and adding a row/column
 Jessica :: 
 ==============================================================
 
