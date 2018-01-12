@@ -1,5 +1,6 @@
 /* to-do
-   1. create method to parse by * and / --> return output into a new arraylist 
+   1. try/exceptions
+   2. create method to parse by * and / --> return output into a new arraylist 
    to evaluate first (PEMDAS) and then parse + evaluate by +/-
 */
 
@@ -102,6 +103,15 @@ public class Calculator {
 	String expression = Keyboard.readString();
 	double answer = Calculator(expression);
 	System.out.println(answer);
+
+	System.out.println("Would you like to calculate another expression?");
+	System.out.println("Select an option: \n\t1. Yes  \n\t2. No"); 
+	int choice = Keyboard.readInt();
+	if (choice == 1){
+	    calculate();
+	} else {
+	    System.out.println("Exiting out of calculator");
+	}
     }
     
     public static void main (String[] args){
@@ -125,5 +135,6 @@ public class Calculator {
 	Calculator foo = new Calculator();
 	foo.calculate();
 	//System.out.println(foo.Calculator(expression));
+
     }
 }
