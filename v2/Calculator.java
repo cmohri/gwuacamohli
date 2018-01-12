@@ -20,13 +20,13 @@ public class Calculator {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //finds the base of every term of the expression
-    public static int findBase(String term){
-	int retVal = 0;
+    public static double findBase(String term){
+	double retVal = 0;
 	int carrot = term.indexOf("^");
 	//System.out.println(carrot);
 	if (carrot >= 0 && (carrot< term.length())){
 	    String base = term.substring(0, carrot);
-	    retVal = Integer.parseInt(base);
+	    retVal = Double.parseDouble(base);
 	}
 	return retVal;
     }
@@ -37,7 +37,7 @@ public class Calculator {
 	double final_output;
 	String[] temparray;
 	int oneafter;
-	int num;
+	double num;
 
 	temparray = parse(expression);
 	
@@ -50,45 +50,45 @@ public class Calculator {
 	    //if "^" --> 1. get degree 2. get base number 3. raise base to degree
 	    if (temparray[i].indexOf("^") >= 0){
 		//System.out.println("carrot");
-		int expt = Parser.findDeg(temparray[i]);
+		double expt = Parser.findDeg(temparray[i]);
 		//System.out.println(deg);
-		int base = findBase(temparray[i]);
+		double base = findBase(temparray[i]);
 	      	//System.out.println(base);
-		int replacement = (int)( Math.pow(base,expt));
+		double replacement = Math.pow(base,expt);
 		//System.out.println(replacement);
-		temparray[i] = Integer.toString(replacement);
+		temparray[i] = Double.toString(replacement);
 	    }
 	}
 
-	final_output = Integer.parseInt(temparray[0]);
+	final_output = Double.parseDouble(temparray[0]);
 	
 	for (int i = 0; i < temparray.length; i++){
 	    //if "+" --> add() the value at i + 1
 	    if (temparray[i].equals("+")){
 		//System.out.println("plus spotted");
 		oneafter = i + 1;
-		num = Integer.parseInt(temparray[oneafter]);
+		num = Double.parseDouble(temparray[oneafter]);
 		final_output += num;
 	    }
 	    //if "-" --> subtract() the value at i + 1
 	    if (temparray[i].equals("-")){
 		//System.out.println("minus spotted");
 		oneafter = i + 1;
-		num = Integer.parseInt(temparray[oneafter]);
+		num = Double.parseDouble(temparray[oneafter]);
 		final_output -= num;
 	    }
 	    //if "*" --> multiply() the value at i + 1
 	    if (temparray[i].equals("*")){
 	     	//System.out.println("mult spotted");
 		oneafter = i + 1;
-		num = Integer.parseInt(temparray[oneafter]);
+		num = Double.parseDouble(temparray[oneafter]);
 		final_output *= num;
 	    }
 	    //if "/" --> divide() the value at i + 1
 	    if (temparray[i].equals("/")){
 	      	//System.out.println("divide spotted");
 		oneafter = i + 1;
-		num = Integer.parseInt(temparray[oneafter]);
+		num = Double.parseDouble(temparray[oneafter]);
 		final_output /= num;
 	    }
 	}
