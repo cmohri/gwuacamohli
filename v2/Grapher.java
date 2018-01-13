@@ -1,24 +1,27 @@
 //Clara Mohri
 
+import java.io.FileWriter;
+import java.io.File;
 import cs1.Keyboard;
 import java.lang.Math;
 
 public class Grapher    
 {
     //instance variables:
-    private String[][] _graph;
-    private int xmax;
-    private int ymax;
-    private int xmin;
-    private int ymin;
+    public String[][] _graph;
+    public String equation;
+    public int xmax;
+    public int ymax;
+    public int xmin;
+    public int ymin;
 
     //default constructor
     public Grapher(){
 	xmax = 10;
-	ymax = 25;
-	xmin = 0;
+	ymax = 20;
+	xmin = -10;
 	ymin = 0;
-	_graph = new String[ymax -ymin+2 ][xmax - xmin+2 ];
+	_graph = new String[ ymax - ymin + 1 ][ xmax - xmin + 1 ];
 	filler();
     }
 
@@ -46,12 +49,6 @@ public class Grapher
 
     //filler method fills _graph with spaces 
     public void filler(){
-	/*for (int i = 0; i <=  ymax; i++){
-	    for (int x = 0; x <= xmax; x++){
-		_graph[i][x] = "  ";
-	    }
-	    }*/
-	
 	for (int i = 0; i < _graph.length; i++){
 	    for (int x = 0; x < _graph[i].length; x++){
 		_graph[i][x] = "  ";
@@ -62,13 +59,17 @@ public class Grapher
     //toString method shows contents of _graph
     public String toString() {
         String foo = "";
+	//user's equation: 
+	foo += equation;
+	    foo += "\n";
         for( int i = ymin; i <= ymax ; i++ ) {
 	    //y axis:
 	    foo += ymax-i;
 	    if (ymax  - i < 10 && ymax-i >-1)
 		foo += " ";
             foo += "| ";
-            for( int j=0; j < xmax; j++ ) {
+	    //actual graph:
+            for( int j=0; j <= xmax/*xmax-xmin*/; j++ ) {
                 foo += _graph[i][j] + " "; 
             }
             foo += "\n";
@@ -86,7 +87,13 @@ public class Grapher
 	foo += "     ";
 	for (int i = xmin; i <= xmax; i++){
 	    foo += i;
-	    foo += "  ";
+	    if (i >= 0 && i < 10){
+		foo += "  ";
+	    }
+	    else if (i <= -10){
+		foo += "";
+	    }
+	    else foo += " ";
 	}
 	foo += "\n";
 
@@ -98,20 +105,27 @@ public class Grapher
 	System.out.println("Enter desired equation. \n\t1. Must be in terms of x\n\t2. Be careful with spaces");
 	System.out.print("y= ");
 	String eq = Keyboard.readString();
-	for (int x = xmin; x < xmax; x++){
+	equation = eq;
+	for (int x = xmin; x <= xmax; x++){
+	    //System.out.print("x: " + x + ", ");
 	    int y = Parser.input(eq, x);
-	    if (y < ymax && y >= ymin){
-		_graph[ymax-y][x] = " •";
+	    //System.out.println("y: " + y); 
+	    if (y <= ymax && y >= ymin){
+		//System.out.println("\twill be plotted");
+		_graph[ymax-y][Math.abs(x+xmin)] = " •";
+		//System.out.println("\t[" + (ymax-y) + "]" + "[" +( Math.abs(x+xmin))+ "]");
 	    }
 	}
 	System.out.println(this);
-    }
+	System.out.println("1. Download graph\n2. Change domain/range\n3. Customize domain/range");
+	int selection = Keyboard.readInt();
 
+    }
 
     public static void main (String[] args){
 
 	Grapher foo = new Grapher();
-	//System.out.println(foo);
+	System.out.println(foo);
 	foo.grapher();
 	//System.out.println(foo);
 
