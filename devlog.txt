@@ -85,14 +85,14 @@ Jessica ::
 
 2018-01-11
 --------------------------------------------------------------
-Clara :: 
+Clara :: Worked on improving range/domain for Grapher.java, but it still needs to become functional.
 Wenting :: 
 Jessica :: Created a parsing method specific for Calculator's needs instead of using Parser's. Created method to find base number to evaluate exponents. Fixed issues with spaces in user input. Calculator can evaluate basic mathematical expressions, even on doubles (but doesn't follow rules of PEMDAS) & takes in user input.
 ==============================================================
 
 2018-01-12
 --------------------------------------------------------------
-Clara :: 
+Clara :: Created Table.java, and some methods: constructor, fillOut(), toString(), and main. Considering making a superclass Function that contains both Grapher and Table as subclasses.
 Wenting :: 
 Jessica :: Calculator now has a while loop to keep it running (allows user to calculate more than one expression)
 ==============================================================
