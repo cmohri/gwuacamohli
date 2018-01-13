@@ -20,7 +20,7 @@ public class Grapher
 	xmax = 10;
 	ymax = 20;
 	xmin = -10;
-	ymin = 0;
+	ymin = -10;
 	_graph = new String[ ymax - ymin + 1 ][ xmax - xmin + 1 ];
 	filler();
     }
@@ -43,7 +43,7 @@ public class Grapher
         ymin = ymini;
         xmax = xmaxi;
         ymax = ymaxi;
-        _graph = new String[ymax -ymin+2 ][xmax - xmin+2 ];
+        _graph = new String[ymax -ymin+1 ][xmax - xmin+1 ];
         filler();
     }
 
@@ -62,14 +62,18 @@ public class Grapher
 	//user's equation: 
 	foo += equation;
 	    foo += "\n";
-        for( int i = ymin; i <= ymax ; i++ ) {
+	    for( int i = 0 ; i < _graph.length ; i++ ) {
 	    //y axis:
+	    //ensures spacing is good, so that the y axis can appear to be a straight line
 	    foo += ymax-i;
 	    if (ymax  - i < 10 && ymax-i >-1)
-		foo += " ";
+		foo += "  ";
+	    else if (ymax - i <= -10){}		
+	    else foo += " ";
             foo += "| ";
-	    //actual graph:
-            for( int j=0; j <= xmax/*xmax-xmin*/; j++ ) {
+
+	    //retrieving data from _graph
+            for( int j= 0; j < _graph[i].length ; j++ ) {
                 foo += _graph[i][j] + " "; 
             }
             foo += "\n";
@@ -83,10 +87,11 @@ public class Grapher
 	    foo += "––-–";
 	}
 	foo += "\n";
-	//x axis:
-	foo += "     ";
+	//x axis numbers:
+	foo += "      ";
 	for (int i = xmin; i <= xmax; i++){
 	    foo += i;
+	    //proper spacing procedures:
 	    if (i >= 0 && i < 10){
 		foo += "  ";
 	    }
@@ -112,20 +117,29 @@ public class Grapher
 	    //System.out.println("y: " + y); 
 	    if (y <= ymax && y >= ymin){
 		//System.out.println("\twill be plotted");
-		_graph[ymax-y][Math.abs(x+xmin)] = " •";
-		//System.out.println("\t[" + (ymax-y) + "]" + "[" +( Math.abs(x+xmin))+ "]");
+		_graph[ ymax-y ][ x-xmin] = " •";
+		//System.out.println("\t[" + (ymax-y) + "]" + "[" +(x-xmin) + "]");
 	    }
 	}
 	System.out.println(this);
+	//printOut();
 	System.out.println("1. Download graph\n2. Change domain/range\n3. Customize domain/range");
 	int selection = Keyboard.readInt();
 
     }
 
+    /*
+    public void printOut(){
+	for (String[] i: _graph){
+	    for (String x: i){
+		System.out.print(x);
+		    }
+	}
+	}*/
+
     public static void main (String[] args){
 
 	Grapher foo = new Grapher();
-	System.out.println(foo);
 	foo.grapher();
 	//System.out.println(foo);
 
