@@ -99,7 +99,8 @@ Jessica :: Calculator now has a while loop to keep it running (allows user to ca
 
 2018-01-12
 --------------------------------------------------------------
-Clara :: Figured out how to properly graph on Grapher.java. The domain and range can now have negative numbers. Fixed the toString() method for Grapher in compliance with these improvements.
+Clara :: Figured out how to properly graph on Grapher.java. The domain and range can now have negative numbers. 
+         Fixed the toString() method for Grapher in compliance with these improvements.
 Wenting ::
 Jessica :: 
 
