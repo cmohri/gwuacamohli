@@ -97,10 +97,18 @@ Wenting ::
 Jessica :: Calculator now has a while loop to keep it running (allows user to calculate more than one expression)
 ==============================================================
 
-2018-01-12
+2018-01-13
 --------------------------------------------------------------
 Clara :: Figured out how to properly graph on Grapher.java. The domain and range can now have negative numbers. 
          Fixed the toString() method for Grapher in compliance with these improvements.
+Wenting ::
+Jessica :: 
+
+==============================================================
+
+2018-01-14
+--------------------------------------------------------------
+Clara :: Improved Table.java: the domain can be set, and it has a driver method that allows the user to interract with a                 Table. Grapher class now has a driver method that allows the user to interact fully with a Grapher. A Table and               Grapher can both be downloaded now.   
 Wenting ::
 Jessica :: 
 
