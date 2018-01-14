@@ -77,7 +77,6 @@ public class Grapher
 	    else foo += " ";
 	}
 	foo += "\n";
-
         return foo;
     }//end toString()
 
@@ -94,7 +93,6 @@ public class Grapher
 	    }
 	}
 	System.out.println(this);
-	driver();
     }//end plotPoints()
 
     //when the equation has already been set as an instance variable. Used by setViewing()
@@ -126,13 +124,14 @@ public class Grapher
 	_graph = new String[ymax-ymin + 1][xmax - xmin + 1]; 
 	filler();
 	plotPoints(equation);	
-	driver();
+	
     }//end setViewing()
     
     //set instance variable xmin
     public void setXmin(){
 	System.out.print("xmin: ");
-        int xmini = Keyboard.readInt();
+	int xmini;        
+	xmini = Keyboard.readInt();	
         while (Math.abs(xmini) > 20){
             System.out.println("\tInput number with absolute value <= 20.");
             System.out.print("xmin: " );
@@ -191,7 +190,7 @@ public class Grapher
 	if (printStr.length() > 8) 
 	    printStr = printStr.substring(0, printStr.length() - 2);
 	System.out.println(printStr);
-	driver();
+	
     }//end calcZeroes()
 
     //method calculates y intercept by inputting 0 as the x value in the equation
@@ -204,22 +203,31 @@ public class Grapher
 
     //method allows user to download toString() of graph to a text file called equation + "graph.txt"
     //the graph will be downloaded to the same directory as wherever this code is stored.
-    public void download(){
-	System.out.println("Downloading " + equation + "_graph.txt...");
+    public void download(String type) {
+	System.out.println("Downloading " + this.equation + "_" + type + ".txt...");
 	try{
-	    PrintWriter writer = new PrintWriter(equation + "_graph.txt", "UTF-8");
+	    PrintWriter writer = new PrintWriter(this.equation + "_" + type + ".txt", "UTF-8");
 	    writer.println(this.toString());
 	    writer.close();
-	    System.out.println("Succesfully downloaded " + equation + "_graph.txt!");
+	    System.out.println("Succesfully downloaded " + equation + "_" + type + ".txt!");
 	} catch (Exception e){ System.out.println("Unable to download.");}
-	driver();
+	
     }//end download
 	
+    //method calls Table
+    public void table() {
+	Table bar = new Table(equation, xmin, xmax);
+	bar.fillOut();
+	System.out.println(bar);
+	bar.driver();
+    }//end table()
+	
+
     //driver method combines everything for user 
     public void driver() {
-	System.out.println("\n---------------------------------------\n1. Customize viewing window\n2. Calculate x- and y-intercepts\n3. Download graph\n4. View table\n5. Input new equation\n6. Exit");
+	System.out.println("\n---------------------------------------\n1. Customize viewing window\n2. Calculate x- and y-intercepts\n3. Download graph\n4. View table\n5. Input new equation\n6. Exit\n---------------------------------------\n");
 	int userInput = Keyboard.readInt();
-	while (userInput < 1 || userInput > 5){
+	while (userInput < 1 || userInput > 6){
 	    System.out.println("Please input a valid selection");
 	    userInput = Keyboard.readInt();
 	}	
@@ -230,14 +238,19 @@ public class Grapher
 	    calcZeroes();
 	}
 	else if (userInput == 3)
-	    download();
+	    download("graph");
 	else if (userInput == 4)
-	    System.out.println("table");
+	    table();
+	
 	else if (userInput == 5){
 	    filler();
 	    plotPoints();
 	}
-	else {return;}
+	else {
+	    System.out.println("Exitting...");
+	    return; 
+	}
+	driver();
     }//end driver()
 
     //main method
@@ -246,4 +259,5 @@ public class Grapher
 	foo.plotPoints();
 	foo.driver();
     }//end main method
-}
+
+}//end class Grapher
