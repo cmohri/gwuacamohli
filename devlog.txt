@@ -108,7 +108,11 @@ Jessica ::
 
 2018-01-14
 --------------------------------------------------------------
-Clara :: Improved Table.java: the domain can be set, and it has a driver method that allows the user to interract with a                 Table. Grapher class now has a driver method that allows the user to interact fully with a Grapher. A Table and               Grapher can both be downloaded now.   
+Clara :: Improved Table.java: the domain can be set, and it has a driver method that allows the user to interract with a  Table. 
+         Grapher class now has a driver method that allows the user to interact fully with a Grapher. 
+      	 A Table and Grapher can both be downloaded now.   
+	 The range and domain can be altered by the user, with setXmin(), setXmax(), setYmin(), set Ymax().
+	 Methods for Grapher now calculate the x- and y-intercepts.      
 Wenting ::
 Jessica :: 
 
