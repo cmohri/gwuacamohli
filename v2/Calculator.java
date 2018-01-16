@@ -1,9 +1,3 @@
-/* to-do
-   1. try/exceptions
-   2. create method to parse by * and / --> return output into a new arraylist 
-   to evaluate first (PEMDAS) and then parse + evaluate by +/-
-*/
-
 import cs1.Keyboard;
 import java.lang.Math;
 
@@ -99,7 +93,7 @@ public class Calculator {
     }//end Calculator
 
     public static void calculate(){
-	System.out.println("Enter a math expression. \n\t1. Acceptable operations are: +, - , * , / , ^  \n\t2. PEMDAS rules are not yet followed"); 
+	System.out.println("Enter a math expression. \n\t1. Acceptable operations are: +, - , * , / , ^  \n\t2. PEMDAS rules are not yet followed\n\t3. Inputting anything other than a mathematical expression will yield an error (letters, etc)"); 
 	String expression = Keyboard.readString();
 	double answer = Calculator(expression);
 	System.out.println(answer);
