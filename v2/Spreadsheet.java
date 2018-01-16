@@ -480,27 +480,27 @@ public class Spreadsheet<T> {
             //Calculating the mean
             if (input == 1) {
                 if (calcAll) {
-                    System.out.println( mean() ); //the entire table
+                    System.out.println( "Calculated mean:  " + mean() ); //the entire table
                 }
-                else System.out.println( mean(calcRow,index) ); //the specified row/column
+                else System.out.println( "Calculated mean:  " + mean(calcRow,index) ); //the specified row/column
                 statistics();
             }
 
             //Calculating the median
             else if (input == 2) {
                 if (calcAll) {
-                    System.out.println( median() ); //the entire table
+                    System.out.println( "Calculated median:  " + median() ); //the entire table
                 }
-                else System.out.println( median(calcRow,index) ); //the specified row/column
+                else System.out.println( "Calculated median:  " + median(calcRow,index) ); //the specified row/column
                 statistics();
             }
 
             //Calculating the mode
             else if (input == 3) {
                 if (calcAll) {
-                    System.out.println( mode() ); //the entire table
+                    System.out.println( "Calculated mode:  " + mode() ); //the entire table
                 }
-                else System.out.println( mode(calcRow,index) ); //the specified row/column
+                else System.out.println( "Calculated mode:  " + mode(calcRow,index) ); //the specified row/column
                 statistics();
             }
 
