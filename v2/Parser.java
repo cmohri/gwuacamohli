@@ -1,9 +1,9 @@
 //Gwuacamohli
-//Clara Mohri
 
+import cs1.Keyboard;
 import java.util.ArrayList;
 
-public class Parser{
+public class Parser {
 
     //turns a string array into an ArrayList.
     //this makes it easier to work with array
@@ -14,7 +14,7 @@ public class Parser{
 	    ret.add(i);
 	}
 	return ret;
-    }
+    }//end toAL(String[] ar)
 
     //splits based on +, -, /, *
     public static ArrayList<String> makeAL(String eq){
@@ -24,7 +24,7 @@ public class Parser{
 	String[] splitted = eq.split(" +");	
 	ArrayList tester = toAL(splitted);
 	return tester;
-    }
+    }//end ArrayList<String> makeAL(String eq)
 
     //finds the degree of every part of the equation
     public static int findDeg(String term){
@@ -36,7 +36,7 @@ public class Parser{
 	    retVal = Integer.parseInt(degree);
 	}
 	return retVal;
-    }
+    }//end findDeg(String term)
 
     //replaces x with a value
     public static int findCoeff(String term){
@@ -50,12 +50,12 @@ public class Parser{
 	    retVal = Integer.parseInt(coeff);
 	}
 	return retVal;
-    }
+    }//end findCoeff(String term)
 
     //contains x boolean
     public static boolean hasX(String term){
 	return term.indexOf("x") >= 0;
-    }
+    }//end hasX(String term)
 
     //precondition: term has x
     //evaluates with an x value
@@ -71,7 +71,7 @@ public class Parser{
 	    return retVal;
 	}
 	else return findCoeff(term);
-    }
+    }//end termInput(String term, int xval)
 
     //precondition: ArrayList with terms in x
     //postcondition: all the terms are evaluated for a certain x
@@ -95,7 +95,7 @@ public class Parser{
 	    }
 	}
 	return eval;
-    }
+    }//end eqCalc(ArrayList<Stirng> eq, int xval)
 
     //precondition: an ArrayList with only ints and operations
     //              evaluates if addition/substraction is necesary
@@ -120,8 +120,7 @@ public class Parser{
 	    }
 	}
 	return retVal;
-    }
-
+    }//end eval(ArrayList nums)
 
     //precondition: an equation in terms of x is inputted as a String
     //              an xval is inputted that must be calcualted for the equation
@@ -130,10 +129,25 @@ public class Parser{
 	ArrayList<String> ar = makeAL(eq);
 	ArrayList calcd = eqCalc(ar, xval);
 	return eval( calcd);
-    }
+    }//end input(String eq, int xval)
+
+	//sorts a String input into a int, double, or String output
+	public static Comparable input() {
+		String in;
+		Comparable output;
+
+		in = Keyboard.readString();
+
+        try {
+            output = (int) Integer.parseInt(in);
+        }
+        catch (Exception e) { 
+            output = (double) Double.parseDouble(in);
+        }
+		return output;
+	}
 
     public static void main (String[] args){
-
 	/*
 	String eq1 = "3x^3+x^2+3";
 	System.out.println(eq1);
@@ -151,7 +165,6 @@ public class Parser{
 	System.out.print("input 0: ");
 	System.out.println(input(eq3, 0));
 	*/
-
     }
     
 }
