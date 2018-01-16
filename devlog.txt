@@ -93,7 +93,7 @@ Jessica :: Created a parsing method specific for Calculator's needs instead of u
 2018-01-12
 --------------------------------------------------------------
 Clara :: Created Table.java, and some methods: constructor, fillOut(), toString(), and main. Considering making a superclass Function that contains both Grapher and Table as subclasses.
-Wenting :: 
+Wenting :: Updated README.md and UML.pdf to current code for Spreadsheet. 
 Jessica :: Calculator now has a while loop to keep it running (allows user to calculate more than one expression)
 ==============================================================
 
@@ -101,7 +101,8 @@ Jessica :: Calculator now has a while loop to keep it running (allows user to ca
 --------------------------------------------------------------
 Clara :: Figured out how to properly graph on Grapher.java. The domain and range can now have negative numbers. 
          Fixed the toString() method for Grapher in compliance with these improvements.
-Wenting ::
+Wenting :: Improved the menus displayed in the terminal when selecting a function for Spreadsheet for user experience.
+	   Created all corresponding methods for each function and updated old functions to comply with variable name changes.
 Jessica :: 
 
 ==============================================================
@@ -113,8 +114,21 @@ Clara :: Improved Table.java: the domain can be set, and it has a driver method 
       	 A Table and Grapher can both be downloaded now.   
 	 The range and domain can be altered by the user, with setXmin(), setXmax(), setYmin(), set Ymax().
 	 Methods for Grapher now calculate the x- and y-intercepts.      
-Wenting ::
+Wenting :: Attached explanatory comments to each method and its variables.
+	   Finetuned SOP outputs to be consistent and explanatory in the terminal for user experience.
+	   Created input() in Parser.java that sorts any String input into an int, double, or String output.
+	   
 Jessica :: 
 
 ==============================================================
 
+2018-01-15
+--------------------------------------------------------------
+Clara :: 
+	 Methods for Grapher now calculate the x- and y-intercepts.      
+Wenting :: Completed code for calculating statistics in mean(), median(), mode(). Debugged such that both int and double values can be in said calculations.
+	   Added the remove row, remove column, and sort data functionality to Spreadsheet.
+	   Spreadsheet is now a working file with each method completely. Now awaiting more testing...
+Jessica :: 
+
+==============================================================
