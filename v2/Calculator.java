@@ -105,7 +105,7 @@ public class Calculator {
 	    System.out.println("\nWould you like to calculate another expression?");
 	    System.out.println("Select an option and press enter: \n\t1. Yes  \n\t2. No"); 
 	    int choice = Keyboard.readInt();
-
+	   
 	    //if user attempts to input a number other than 1 or 2
 	    while (choice != 1 && choice !=2){
 	    	System.out.println("Please choose an option. Option 1 or 2? \n\t1. Yes  \n\t2. No");

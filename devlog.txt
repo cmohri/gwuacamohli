@@ -129,6 +129,6 @@ Clara ::
 Wenting :: Completed code for calculating statistics in mean(), median(), mode(). Debugged such that both int and double values can be in said calculations.
 	   Added the remove row, remove column, and sort data functionality to Spreadsheet.
 	   Spreadsheet is now a working file with each method completely. Now awaiting more testing...
-Jessica :: 
+Jessica :: Added try/catch block to deal with invalid math expressions. Wrote while loop in case user attempted to choose invalid option (an input other than 1 or 2).
 
 ==============================================================
