@@ -91,19 +91,35 @@ public class Calculator {
     }//end Calculator
 
     public static void calculate(){
-	System.out.println("Enter a math expression. \n\t1. Acceptable operations are: +, - , * , / , ^  \n\t2. PEMDAS rules are not yet followed\n\t3. Inputting anything other than a mathematical expression will yield an error (letters, etc)"); 
+	System.out.println("Enter a math expression. \n\t1. Acceptable operations are: +, - , * , / , ^  \n\t2. PEMDAS rules are not yet followed");
+	
 	String expression = Keyboard.readString();
-	double answer = Calculator(expression);
-	System.out.print("Answer: ");
-	System.out.println(answer);
+	
+	//if user attempts to input an invalid expression 
+	try {
+	    double answer = Calculator(expression);
+	    System.out.print("Answer: ");
+	    System.out.println(answer);
 
-	System.out.println("\nWould you like to calculate another expression?");
-	System.out.println("Select an option and press enter: \n\t1. Yes  \n\t2. No"); 
-	int choice = Keyboard.readInt();
-	if (choice == 1){
+
+	    System.out.println("\nWould you like to calculate another expression?");
+	    System.out.println("Select an option and press enter: \n\t1. Yes  \n\t2. No"); 
+	    int choice = Keyboard.readInt();
+
+	    //if user attempts to input a number other than 1 or 2
+	    while (choice != 1 && choice !=2){
+	    	System.out.println("Please choose an option. Option 1 or 2? \n\t1. Yes  \n\t2. No");
+	    	choice = Keyboard.readInt();
+	    }
+	
+	    if (choice == 1){
+	    	calculate();
+	    } else if (choice == 2) {
+	    	System.out.println("Exiting out of calculator");
+	    }
+	} catch (NumberFormatException e){
+	    System.out.println("Invalid expression. Please try again");
 	    calculate();
-	} else {
-	    System.out.println("Exiting out of calculator");
 	}
     }
     
