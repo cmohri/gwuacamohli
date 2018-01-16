@@ -13,7 +13,7 @@ public class Woo{
 	System.out.println("4. View description of each option");
 	System.out.println("5. Exit");
 	int userInput = Keyboard.readInt();
-	while (userInput < 1 || userInput > 4){
+	while (userInput < 1 || userInput > 5){
 	    System.out.println("Please input a valid selection");
 	    userInput = Keyboard.readInt();
 	}
@@ -25,7 +25,7 @@ public class Woo{
 	if (userInput == 2){
 	    Spreadsheet moo = new Spreadsheet();
 	    moo.filler();
-	    moo.functions();
+	    moo.mainMenu();
 	}
 	if (userInput == 3){
 	    Calculator bar = new Calculator();
@@ -35,6 +35,7 @@ public class Woo{
 	    System.out.println(description());
 	}
 	else {	    
+	    System.out.println("Exitting...");
 	    return;
 	}
 	driver();
