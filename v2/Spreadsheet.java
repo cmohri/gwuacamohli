@@ -23,7 +23,7 @@
 
 import cs1.Keyboard;
 
-public class Spreadsheet<T> {
+public class Spreadsheet {
     
     private final static int DEFAULT_SIZE = 1;
 
@@ -399,8 +399,7 @@ public class Spreadsheet<T> {
     public void statistics() {
         String s;
         boolean calcRow = false, calcAll = false;
-        int index = 0;
-        Comparable input, input2 = 0;
+        int index = 0, input, input2 = 0;
         
             s = "\nWhat would you like to calculate:\n";
             s += "\t1: Mean\n";
@@ -513,8 +512,8 @@ public class Spreadsheet<T> {
             else if (input == 5) {
                 s = "Are you sure? (y or n)  ";
                 System.out.print(s);
-                input = Keyboard.readString();
-                if (input.equals("n")) {
+                s = Keyboard.readString();
+                if (s.equals("n")) {
                     edit();
                 }
                 else System.out.println("\n~~ Hope ya had a great time!");
