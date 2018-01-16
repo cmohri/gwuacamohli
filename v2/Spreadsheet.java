@@ -172,7 +172,7 @@ public class Spreadsheet<T> {
         //Error message for invalid inputs
         else {
             System.out.println("Your selection is not an option. Please enter one of the options.");
-            mainmenu();
+            mainMenu();
         }
     }
 
@@ -424,10 +424,15 @@ public class Spreadsheet<T> {
 
             //Specify a row 
             if (input2 == 1) {
-                s = "\n\tSpecify a row:  ";
+                s = "Specify a row:  ";
                 System.out.print(s);
                 index = Keyboard.readInt();
                 calcRow = true;
+
+                if (index >= numRows) {
+                    System.out.println("Error: Invalid input for index. Returning to to the previous menu.");
+                    statistics();
+                }
 
                 for (int i = 1; i < numCols; i++) {
                     if (_table[index][i] instanceof String) {
@@ -439,10 +444,15 @@ public class Spreadsheet<T> {
 
             //Specify a column
             else if (input2 == 2) {
-                s = "\n\tSpecify a column:  ";
+                s = "Specify a column:  ";
                 System.out.print(s);
                 index = Keyboard.readInt();
                 calcRow = false;
+
+                if (index >= numCols) {
+                    System.out.println("Error: Invalid input for index. Returning to to the previous menu.");
+                    statistics();
+                }
 
                 for (int i = 1; i < numRows; i++) {
                     if (_table[i][index] instanceof String) {
@@ -568,7 +578,6 @@ public class Spreadsheet<T> {
         }
          _table = temp;
     }
-    }
 
     //Adds a row or column at specified index
     //If removeRow is true, add row at index
@@ -624,6 +633,8 @@ public class Spreadsheet<T> {
     }
 
     //-------------------------------
+    //Calculates the mean of the values in the table
+    //Mean = Returns sum of each considered value divided by the total number of values 
     public double mean() {
         int totalNum = (numRows - 1) * (numCols - 1);
         double sum = 0;
@@ -635,31 +646,46 @@ public class Spreadsheet<T> {
         return sum / totalNum;
     }
 
+    //Calculates the mean of the values in a specified row or column
+    //If calcRow is true, calculate the mean for the specified row
+    //              false, calculate the mean for the specified column
     public double mean(boolean calcRow, int index) {
         int totalNum;
         double sum = 0;
 
         if (calcRow) {
+            //Calculating the mean of row index
             totalNum = numCols - 1;
             for (int i = 1; i < numCols; i++) {
-                sum += (double)_table[index][i];
+                if (_table[index][i] instanceof Double) 
+                    sum += (double)_table[index][i];
+                else sum += (int)_table[index][i];
             }
         }
         else {
+            //Calculating the mean of column index
             totalNum = numRows - 1;
             for (int i = 1; i < numRows; i++) {
-                sum += (double)_table[i][index];
+                if (_table[index][i] instanceof Double) 
+                    sum += (double)_table[index][i];
+                else sum += (int)_table[index][i];
             }
         }
         return sum / totalNum;
     }
 
+    //Calculates the median of the values in the table
+    //Median: Copies considered values to an array and sorts the array into ascending order
+    //Returns the value at the middle for odd-lengthed arrays and the mean 
+    //    of the two values at the middle for even-lengthed arrays.
     public double median() {
         int placeholder = 0;
         double[] temp = new double[(numRows - 1) * (numCols - 1)];
         for (int i = 1; i < numRows; i++) {
             for (int j = 1; j < numCols; j++) {
-                temp[placeholder] = (double)_table[i][j];
+                if (_table[i][j] instanceof Double) 
+                    temp[placeholder] = (double)_table[index][i];
+                else temp[placeholder] = (int)_table[index][i];
                 placeholder++;
             }
         }
@@ -672,6 +698,9 @@ public class Spreadsheet<T> {
          }
     }
 
+    //Calculates the median of the values in a specified row or column
+    //If calcRow is true, calculate the median for the specified row
+    //              false, calculate the median for the specified column
     public double median(boolean calcRow, int index) {
         double[] temp;
         if (calcRow) {
@@ -695,6 +724,7 @@ public class Spreadsheet<T> {
          }
     }
 
+    //Calculates the mode of the values in the table  
     public double mode() {
         int count = 0, maxCount = 0;
         double tempval, mode = 0;
@@ -723,6 +753,9 @@ public class Spreadsheet<T> {
         return mode;
     }
 
+    //Calculates the mode of the values in a specified row or column
+    //If calcRow is true, calculate the mode for the specified row
+    //              false, calculate the mode for the specified column
     public double mode(boolean calcRow, int index) {
         int count = 0, maxCount = 0;
         double tempval, mode = 0;
