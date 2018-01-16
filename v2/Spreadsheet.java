@@ -18,7 +18,6 @@
  *        -       -
  *   ... where d is at position (2,1).
  *
- * TASK:
  * 
  ***/
 
@@ -62,7 +61,7 @@ public class Spreadsheet<T> {
             s = "\n...Creating table with dimensions " + numRows + " by " + numCols + "...";
             System.out.println(s);
         }
-    }
+    }     
 
     public String toString(){
         String retStr = "\t";
@@ -79,13 +78,13 @@ public class Spreadsheet<T> {
             }
             retStr += "\n\n";
         }
-        return retStr;
+        return retStr + "\b";
     }
 
 //sort input to String, int, double
     public void filler() {
-        String s;
-        Object input = 0;
+        String s, in;
+        Object input = "";
 
         for (int i = 1; i < numRows; i++) {
             for (int j = 1; j < numCols; j++) {
@@ -93,33 +92,278 @@ public class Spreadsheet<T> {
                 s = "Enter a value at (" + i + "," + j + "):  ";
                 System.out.print(s);
 
-                input = Keyboard.readString();             
+                input = Parser.input();
+
                 set(i,j,input);
             }
-        }//sorting inputs
+        }
 
-        s = "\n...Displaying filled chart...\n";
+        s = "\n...Displaying filled table...\n";
         System.out.println(s + this);
     }
 
-    public void functions() {
+    public void filler(boolean fillRow,int index) {
         String s;
-        int r, c;
+        Object input;
 
-        s = "What would you like to do next?\n";
+        //Filling the new Row
+        if (fillRow) {
+            s = "\n";
+           for (int i = 1; i < numCols; i++) {
+               
+                s = "Enter a value at (" + index + "," + i + "):  ";
+                System.out.print(s);
+
+                input = Parser.input();
+                set(index,i,input);
+           }
+        }
+
+        //Filling the new Column
+        else {
+            s = "\n";
+           for (int i = 1; i < numRows; i++) {
+               
+                s = "Enter a value at (" + i + "," + index + "):  ";
+                System.out.print(s);
+
+                input = Parser.input();
+                set(i,index,input);
+           }
+        }
+
+        s = "\n...Displaying filled table...\n";
+        System.out.println(s + this);        
+    }
+
+    public void mainMenu() {
+        String s;
+        int input;
+
+        s = "\nWhat would you like to do next?\n";
         s += "\t1: Edit the table\n";
         s += "\t2: Calculate statistics\n";
         s += "\t3: Exit program\n";
-        System.out.println(s);
+        s += "Your selection:  ";
+        System.out.print(s);
+        input = Keyboard.readInt();
 
-        if (Keyboard.readInt() == 1) {
-            
-            s = "wooo?"; //answer in the form of (a,b)
-            s += "\nRow: ";
-            System.out.println(s);
+        if (input == 1) 
+            edit();
 
+        else if (input == 2) 
+            statistics();
+            //security check for all ints and doubles
 
+        else if (input == 3) 
+            System.out.println("\n~~ Hope ya had a great time!");
+
+        else {
+            //error message
         }
+    }
+
+    public void edit(){
+        String s;
+        int r,c;
+        Object input;
+        
+            s = "\nChoose a following option to edit the table:\n";
+            s += "\t1: Edit value in a slot\n";
+            s += "\t2: Remove value at a slot\n";
+            s += "\t3: Add a row\n";
+            s += "\t4: Add a column\n"; 
+            s += "\t5: Back to main menu\n";
+            s += "\t6: Exit the program\n";
+            s += "Your selection:  ";
+            System.out.print(s);
+            
+            input = Keyboard.readInt();
+
+            //Setting the value at a specified (r,c)
+            if (input == 1) {
+                s = "\nEditing value at a specified slot...\n";
+                s += "\tSpecify row number: ";
+                System.out.print(s);
+                r = Keyboard.readInt();
+
+                s = "\tSpecify column number: ";
+                System.out.print(s);
+                c = Keyboard.readInt();
+
+                s = "\t...to what?  ";
+                System.out.print(s);
+                input = Parser.input();
+                set(r,c,input);
+                System.out.println("\n...Setting slot(" + r + "," + c +") to " + input + "...\n" + this);
+
+                edit();
+            }
+
+            //Removing the value at a specified(r,c)
+            else if (input == 2) {
+                s = "\nRemoving value at a specified slot...\n";
+                s += "\tSpecify row number: ";
+                System.out.print(s);
+                r = Keyboard.readInt();
+
+                s = "\tSpecify column number: ";
+                System.out.print(s);
+                c = Keyboard.readInt();
+                remove(r,c);
+                System.out.println("\n...Removing value @slot(" + r + "," + c +")" + "...\n" + this);
+                
+                edit();
+            }
+
+            //Adding a row
+            else if (input == 3) {
+                s = "\nAdding a new row...\n";
+                s += "\tSpecify row index at which you want to insert the new row: ";
+                System.out.print(s);
+                r = Keyboard.readInt();
+
+                addRow(r);
+                System.out.println("\n...New row " + r + " inserted...\n" + this);
+                filler(true,r);
+
+                edit();
+            }
+
+            //Adding a column
+            else if (input == 4) {
+                s = "\nAdding a new column...\n";
+                s += "\tSpecify column index at which you want to insert the new column: ";
+                System.out.print(s);
+                c = Keyboard.readInt();
+
+                addCol(c);
+                System.out.println("\nNew column " + c + " inserted...\n" + this);
+                filler(false,c);
+
+                edit();
+            }
+
+            //Back to main menu!
+            else if (input == 5) {
+                mainMenu();
+            }
+
+            else if (input == 6) {
+                s = "Are you sure? (y or n)  ";
+                System.out.print(s);
+                input = Keyboard.readString();
+                if (input.equals("n")) {
+                    edit();
+                }
+                else System.out.println("\n~~ Hope ya had a great time!");
+            }
+
+            //error message
+            else {
+
+            }
+            
+    }
+
+    public void statistics() {
+        String s;
+        boolean calcRow = false, calcAll = false;
+        int index = 0;
+        Object input, input2 = 0;
+        
+            s = "\nWhat would you like to calculate:\n";
+            s += "\t1: Mean\n";
+            s += "\t2: Median\n";
+            s += "\t3: Mode\n";
+            s += "\t4: Back to main menu\n";
+            s += "\t5: Exit the program\n";
+            s += "Your selection:  ";
+            System.out.print(s);
+            input = Keyboard.readInt();
+
+            if (!(input == 4)) {
+            s = "\nCalulate statistics on...\n";
+            s += "\t1: a specified row\n";
+            s += "\t2: a specified column\n";
+            s += "\t3: every value in the table\n";
+            s += "Your selection:  ";
+            System.out.print(s);
+            input2 = Keyboard.readInt();
+            }
+
+            if (input2 == 1) {
+                s = "\n\tSpecify a row:  ";
+                System.out.print(s);
+                index = Keyboard.readInt();
+                calcRow = true;
+            }
+
+            else if (input2 == 2) {
+                s = "\n\tSpecify a column:  ";
+                System.out.print(s);
+                index = Keyboard.readInt();
+                calcRow = false;
+            }
+
+            else if (input2 == 3) {
+                calcAll = true;
+            }
+
+            else {
+                //error messages
+                s = "\nInput is not an option. Returning to the previous menu...";
+                System.out.println(s);
+                statistics();
+            }
+
+//----------------------
+            //mean
+            if (input == 1) {
+                if (calcAll) {
+                    System.out.println( mean() );
+                }
+                else System.out.println( mean(calcRow,index) );
+                statistics();
+            }
+
+            //median
+            else if (input == 2) {
+                if (calcAll) {
+                    System.out.println( median() );
+                }
+                else System.out.println( median(calcRow,index) );
+                statistics();
+            }
+
+            //mode
+            else if (input == 3) {
+                if (calcAll) {
+                    System.out.println( mode() );
+                }
+                else System.out.println( mode(calcRow,index) );
+                statistics();
+            }
+
+            //Back to main menu!
+            else if (input == 4) {
+                mainMenu();
+            }
+
+            else if (input == 5) {
+                s = "Are you sure? (y or n)  ";
+                System.out.print(s);
+                input = Keyboard.readString();
+                if (input.equals("n")) {
+                    edit();
+                }
+                else System.out.println("\n~~ Hope ya had a great time!");
+            }
+
+            //error messages
+            else {
+
+            }
     }
 
     public Object set(int r, int c, Object newVal) {
@@ -128,22 +372,187 @@ public class Spreadsheet<T> {
         return retVal;        
     }
 
-/*
-    public Object[] addRow() {
+    public Object remove(int r, int c) {
+        Object retVal = _table[r][c];
+        _table[r][c] = "";
+        return retVal;        
+    }
+
+    public void addRow(int r) {
         numRows++;
         Object[][] temp = new Object[numRows][numCols];
-
-
+        for (int i = numRows - 1; i > r; i--) {
+            for (int j = 1; j < numCols; j++) {
+                temp[i][j] = _table[i-1][j]; 
+            } 
+        }
+        for (int i = r - 1; i > 0; i--) {
+            for (int j = 1; j < numCols; j++) {
+                temp[i][j] = _table[i][j];
+            }
+        }
+        _table = temp;
     }
 
-    public Object[] addRow(int r) {
-
+    public void addCol(int c) {
+        numCols++;
+        Object[][] temp = new Object[numRows][numCols];
+            for (int i = numCols - 1; i > c; i--) {
+                for (int j = 1; j < numRows; j++) {
+                    temp[j][i] = _table[j][i-1];
+                }
+            }
+            for (int i = c - 1; i > 0; i--) {
+                for (int j = 1; j < numRows; j++) {
+                    temp[j][i] = _table[j][i];
+                }
+            }
+            _table = temp;
     }
 
-    public Object[] add(){
+    public void insertionSort(double[] data) {
+        for( int partition = 1; partition < data.length; partition++ ) {
 
+            for( int i = partition; i > 0; i-- ) {
+                if ( data[i] < ( data[i - 1] )) {
+                    double temp = data[i];
+                    data[i] = data[i-1];
+                    data[i-1] = temp;
+                } 
+                else break;
+            } 
+        }
     }
-*/
+
+    public double mean() {
+        int totalNum = (numRows - 1) * (numCols - 1);
+        double sum = 0;
+        for (Object[] r : _table) {
+            for (Object c : r) {
+                sum += (double)c; 
+            }
+        }
+        return sum / totalNum;
+    }
+
+    public double mean(boolean calcRow, int index) {
+        int totalNum;
+        double sum = 0;
+
+        if (calcRow) {
+            totalNum = numCols - 1;
+            for (Object c : _table[index]) {
+                sum += (double)c;
+            }
+        }
+        else {
+            totalNum = numRows - 1;
+            for (int i = 1; i < numRows; i++) {
+                sum += (double)_table[i][index];
+            }
+        }
+        return sum / totalNum;
+    }
+
+    public double median() {
+        int placeholder = 0;
+        double[] temp = new double[(numRows - 1) * (numCols - 1)];
+        for (int i = 1; i < numRows; i++) {
+            for (int j = 1; j < numCols; j++) {
+                temp[placeholder] = (double)_table[i][j];
+            }
+        }
+        insertionSort(temp);
+        if (temp.length % 2 == 0) 
+            return (temp[(temp.length / 2) - 1] + temp[(temp.length / 2) + 1]) / 2;
+        else return temp[(temp.length / 2) + 1];
+    }
+
+    public double median(boolean calcRow, int index) {
+        double[] temp;
+        if (calcRow) {
+            temp = new double[numCols - 1];
+            for (int i = 1; i < numCols; i++) {
+                temp[i - 1] = (double)_table[index][i];
+            }
+        }
+        else {
+            temp = new double[numRows - 1];
+            for (int i = 1; i < numRows; i++) {
+                temp[i - 1] = (double)_table[i][index];
+            };
+        }
+        insertionSort(temp);
+
+        if (temp.length % 2 == 0) 
+            return (temp[temp.length / 2] + temp[(temp.length / 2) - 1]) / 2;
+         else {
+             return temp[temp.length / 2];
+         }
+    }
+
+    public double mode() {
+        int count = 0, maxCount = 0;
+        double tempval, mode = 0;
+        int placeholder = 0;
+        double[] temp = new double[(numRows - 1) * (numCols - 1)];
+        for (int i = 1; i < numRows; i++) {
+            for (int j = 1; j < numCols; j++) {
+                temp[placeholder] = (double)_table[i][j];
+            }
+        }
+        insertionSort(temp);
+
+        tempval = temp[0];
+        for (double n : temp) {
+            if (tempval ==  n) {
+                count++;
+            }
+            if (count > maxCount) {
+                maxCount = count;
+                mode = tempval;
+            }
+            count = 1;
+            tempval = n;
+        }
+        return mode;
+    }
+
+    public double mode(boolean calcRow, int index) {
+        int count = 0, maxCount = 0;
+        double tempval, mode = 0;
+        double[] temp;
+
+        if (calcRow) {
+            temp = new double[numCols - 1];
+            for (int i = 1; i < numCols; i++) {
+                temp[i - 1] = (double)_table[index][i];
+            }
+        }
+        else {
+            temp = new double[numRows - 1];
+            for (int i = 1; i < numRows; i++) {
+                temp[i - 1] = (double)_table[i][index];
+            };
+        }
+        insertionSort(temp);
+
+        tempval = temp[0];
+        for (double n : temp) {
+            if (tempval ==  n) {
+                count++;
+            }
+            if (count > maxCount) {
+                maxCount = count;
+                mode = tempval;
+            }
+            count = 1;
+            tempval = n;
+        }
+        return mode;
+    }
+
+
     public static void main(String[] args){
 
         Spreadsheet pigeon = new Spreadsheet();
@@ -151,9 +560,9 @@ public class Spreadsheet<T> {
         System.out.println(pigeon);
         pigeon.filler();
 
-//Would you like to get, set, remove, addRow, addCol, statistics, exit
-        pigeon.functions();
+//Would you like to set, remove, addRow, addCol, statistics, exit
+        pigeon.mainMenu();
 
+    }//end of main
 
-    }
 }//end of Spreadsheet 

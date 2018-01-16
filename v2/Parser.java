@@ -1,5 +1,6 @@
 //Gwuacamohli
 
+import cs1.Keyboard;
 import java.util.ArrayList;
 
 public class Parser {
@@ -129,6 +130,22 @@ public class Parser {
 	ArrayList calcd = eqCalc(ar, xval);
 	return eval( calcd);
     }//end input(String eq, int xval)
+
+	//sorts a String input into a int, double, or String output
+	public static Object input() {
+		String in;
+		Object output;
+
+		in = Keyboard.readString();
+
+        try {
+            output = (int) Integer.parseInt(in);
+        }
+        catch (Exception e) { 
+            output = (double) Double.parseDouble(in);
+        }
+		return output;
+	}
 
     public static void main (String[] args){
 	/*
