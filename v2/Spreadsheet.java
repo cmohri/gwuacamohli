@@ -640,7 +640,9 @@ public class Spreadsheet<T> {
         double sum = 0;
             for (int i = 1; i < numRows; i++) {
                 for (int j = 1; j < numCols; j++) {
-                sum += (double)_table[i][j]; 
+                if (_table[i][j] instanceof Double) 
+                    sum += (double)_table[i][j];
+                else sum += (int)_table[i][j];
             }
         }
         return sum / totalNum;
@@ -667,8 +669,8 @@ public class Spreadsheet<T> {
             totalNum = numRows - 1;
             for (int i = 1; i < numRows; i++) {
                 if (_table[index][i] instanceof Double) 
-                    sum += (double)_table[index][i];
-                else sum += (int)_table[index][i];
+                    sum += (double)_table[i][index];
+                else sum += (int)_table[i][index];
             }
         }
         return sum / totalNum;
@@ -684,8 +686,8 @@ public class Spreadsheet<T> {
         for (int i = 1; i < numRows; i++) {
             for (int j = 1; j < numCols; j++) {
                 if (_table[i][j] instanceof Double) 
-                    temp[placeholder] = (double)_table[index][i];
-                else temp[placeholder] = (int)_table[index][i];
+                    temp[placeholder] = (double)_table[i][j];
+                else temp[placeholder] = (int)_table[i][j];
                 placeholder++;
             }
         }
@@ -706,13 +708,17 @@ public class Spreadsheet<T> {
         if (calcRow) {
             temp = new double[numCols - 1];
             for (int i = 1; i < numCols; i++) {
-                temp[i - 1] = (double)_table[index][i];
+                if (_table[index][i] instanceof Double) 
+                    temp[i - 1] = (double)_table[index][i];
+                else temp[i - 1] = (int)_table[index][i];
             }
         }
         else {
             temp = new double[numRows - 1];
             for (int i = 1; i < numRows; i++) {
-                temp[i - 1] = (double)_table[i][index];
+                if (_table[index][i] instanceof Double) 
+                    temp[i - 1] = (double)_table[index][i];
+                else temp[i - 1] = (int)_table[index][i];
             };
         }
         insertionSort(temp);
@@ -732,7 +738,9 @@ public class Spreadsheet<T> {
         double[] temp = new double[(numRows - 1) * (numCols - 1)];
         for (int i = 1; i < numRows; i++) {
             for (int j = 1; j < numCols; j++) {
-                temp[placeholder] = (double)_table[i][j];
+                if (_table[i][j] instanceof Double) 
+                    temp[placeholder] = (double)_table[i][j];
+                else temp[placeholder] = (int)_table[i][j];
                 placeholder++;
             }
         }
@@ -764,13 +772,17 @@ public class Spreadsheet<T> {
         if (calcRow) {
             temp = new double[numCols - 1];
             for (int i = 1; i < numCols; i++) {
-                temp[i - 1] = (double)_table[index][i];
+                if (_table[index][i] instanceof Double) 
+                    temp[i - 1] = (double)_table[index][i];
+                else temp[i - 1] = (int)_table[index][i];
             }
         }
         else {
             temp = new double[numRows - 1];
             for (int i = 1; i < numRows; i++) {
-                temp[i - 1] = (double)_table[i][index];
+                if (_table[i][index] instanceof Double) 
+                    temp[i - 1] = (double)_table[i][index];
+                else temp[i - 1] = (int)_table[i][index];
             };
         }
         insertionSort(temp);
