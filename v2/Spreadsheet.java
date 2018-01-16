@@ -30,6 +30,7 @@ public class Spreadsheet<T> {
     private int numRows, numCols;
     private Comparable[][] _table;
 
+    //default constructor
     public Spreadsheet(){
         newTable();
         numRows++;
@@ -37,6 +38,8 @@ public class Spreadsheet<T> {
         _table = new Comparable[numRows][numCols];
     }
 
+    //Initiates graph by asking user for number of rows and columns
+    //Creates graph of default size 1 by 1 if inputs are invalid
     public void newTable() {
         String s;
 
@@ -63,6 +66,8 @@ public class Spreadsheet<T> {
         }
     }     
 
+    //Overwrites toString() to return the table with each row 
+    //and column labeled starting from 1
     public String toString(){
         String retStr = "\t";
         for (int n = 1; n < numCols; n++) {
@@ -81,7 +86,7 @@ public class Spreadsheet<T> {
         return retStr + "\b";
     }
 
-//sort input to String, int, double
+    //Fills each slot with a user input
     public void filler() {
         String s, in;
         Comparable input = "";
@@ -101,6 +106,9 @@ public class Spreadsheet<T> {
         System.out.println(s + this);
     }
 
+    //Overwrites filler() and fills a specified row or column with user input
+    //if boolean fillRow is true, fill in the row at the given index
+    //                      false, fill in the column at the given index
     public void filler(boolean fillRow,int index) {
         String s;
         Comparable input;
@@ -135,6 +143,7 @@ public class Spreadsheet<T> {
         System.out.println(s + this);        
     }
 
+    //Contains selection to edit or calculate statistics
     public void mainMenu() {
         String s;
         int input;
@@ -147,25 +156,31 @@ public class Spreadsheet<T> {
         System.out.print(s);
         input = Keyboard.readInt();
 
+        //Edit the table
         if (input == 1) 
             edit();
 
+        //Calculate statistics
         else if (input == 2) 
             statistics();
             //security check for all ints and doubles
 
+        //Exit the program
         else if (input == 3) 
             System.out.println("\n~~ Hope ya had a great time!");
 
+        //Error message for invalid inputs
         else {
-            //error message
+            System.out.println("Your selection is not an option. Please enter one of the options.");
+            mainmenu();
         }
     }
 
+    //Contains selection to edit the table
     public void edit(){
         String s;
-        int r,c;
-        Comparable input;
+        int r,c, input;
+        Comparable input2;
         
             s = "\nChoose a following option to edit the table:\n";
             s += "\t1: Edit value in a slot\n";
@@ -195,8 +210,8 @@ public class Spreadsheet<T> {
 
                 s = "\t...to what?  ";
                 System.out.print(s);
-                input = Parser.input();
-                set(r,c,input);
+                input2 = Parser.input();
+                set(r,c,input2);
                 System.out.println("\n...Setting slot(" + r + "," + c +") to " + input + "...\n" + this);
 
                 edit();
@@ -218,7 +233,7 @@ public class Spreadsheet<T> {
                 edit();
             }
 
-            //Adding a row
+            //Adding a row r
             else if (input == 3) {
                 s = "\nAdding a new row...\n";
                 s += "\tSpecify row index at which you want to insert the new row: ";
@@ -232,7 +247,7 @@ public class Spreadsheet<T> {
                 edit();
             }
 
-            //Adding a column
+            //Adding a column c
             else if (input == 4) {
                 s = "\nAdding a new column...\n";
                 s += "\tSpecify column index at which you want to insert the new column: ";
@@ -246,7 +261,7 @@ public class Spreadsheet<T> {
                 edit();
             }
 
-            //Remove a row
+            //Remove a row r
             else if (input == 5) {
                 s = "\nRemoving a row...\n";
                 s += "\tSpecify the index of the row you wish to remove: ";
@@ -260,7 +275,7 @@ public class Spreadsheet<T> {
                 edit();
             }
 
-            //Remove a column
+            //Remove a column c
             else if (input == 6) {
                 s = "\nRemoving a column...\n";
                 s += "\tSpecify the index of the column you wish to remove: ";
@@ -274,7 +289,8 @@ public class Spreadsheet<T> {
                 edit();
             }
 
-            //Sort data
+            //Sort data in ascending order
+            //Allows sorting for a specified row, column, or entire table
             else if (input == 7) {
 
                 s = "\nSort data of (in ascending order)...\n";
@@ -285,8 +301,9 @@ public class Spreadsheet<T> {
                 System.out.print(s);
                 input = Keyboard.readInt();
 
+                //Sorting a row r
                 if (input == 1) {
-                    s += "\tSpecify row number: ";
+                    s += "\n\tSpecify row number: ";
                     System.out.print(s);
                     r = Keyboard.readInt();
 
@@ -300,10 +317,13 @@ public class Spreadsheet<T> {
                     }
 
                     System.out.println("...Displaying sorted table...\n" + this);
+                    
+                    edit();
                 }
 
+                //Sorting a column c
                 else if (input == 2) {
-                    s += "\tSpecify column number: ";
+                    s += "]\n\tSpecify column number: ";
                     System.out.print(s);
                     c = Keyboard.readInt();
 
@@ -317,9 +337,11 @@ public class Spreadsheet<T> {
                     }
 
                     System.out.println("...Displaying sorted table...\n" + this);
+
+                    edit();
                 }
 
-
+                //Sorting the entire table
                 else if (input == 3) {
                     int placeholder = 0;
                     double[] temp = new double[(numRows - 1)*(numCols - 1)];
@@ -339,6 +361,7 @@ public class Spreadsheet<T> {
                     }
                 }
 
+                //Error message for invalid inputs
                 else {
                     System.out.println("Your selection is not an option. Returning to the previous menu.");
                     edit();
@@ -350,22 +373,29 @@ public class Spreadsheet<T> {
                 mainMenu();
             }
 
+            //Exit the program
             else if (input == 9) {
                 s = "Are you sure? (y or n)  ";
                 System.out.print(s);
-                input = Keyboard.readString();
-                if (input.equals("n")) {
+                input2 = Keyboard.readString();
+                if (input2.equals("n")) {
                     edit();
                 }
                 else System.out.println("\n~~ Hope ya had a great time!");
             }
 
+            //Error message for invalid inputs
             else {
                 System.out.println("Your selection is not an option. Please enter one of the options.");
                 edit();
             }
     }
 
+    //Contains selection to calculate mean, median, or mode for 
+    //a specifed row, column, or the entire table.
+    //Checks if selected rows or tables only hold int or double values.
+    //If calcAll is true, calculate statistics for all values in the table.
+    //If calcRow is true, calculate statistics for a specified index
     public void statistics() {
         String s;
         boolean calcRow = false, calcAll = false;
@@ -392,6 +422,7 @@ public class Spreadsheet<T> {
             input2 = Keyboard.readInt();
             }
 
+            //Specify a row 
             if (input2 == 1) {
                 s = "\n\tSpecify a row:  ";
                 System.out.print(s);
@@ -406,6 +437,7 @@ public class Spreadsheet<T> {
                 }
             }
 
+            //Specify a column
             else if (input2 == 2) {
                 s = "\n\tSpecify a column:  ";
                 System.out.print(s);
@@ -420,6 +452,7 @@ public class Spreadsheet<T> {
                 }
             }
 
+            //Selected the entire table
             else if (input2 == 3) {
                 calcAll = true;
 
@@ -433,38 +466,31 @@ public class Spreadsheet<T> {
                 }
             }
 
-            /*else {
-                //error messages
-                s = "\nYour selection is not an option. Returning to the previous menu...";
-                System.out.println(s);
-                statistics();
-            } */
-
-//----------------------
-            //mean
+        //---------------------------
+            //Calculating the mean
             if (input == 1) {
                 if (calcAll) {
-                    System.out.println( mean() );
+                    System.out.println( mean() ); //the entire table
                 }
-                else System.out.println( mean(calcRow,index) );
+                else System.out.println( mean(calcRow,index) ); //the specified row/column
                 statistics();
             }
 
-            //median
+            //Calculating the median
             else if (input == 2) {
                 if (calcAll) {
-                    System.out.println( median() );
+                    System.out.println( median() ); //the entire table
                 }
-                else System.out.println( median(calcRow,index) );
+                else System.out.println( median(calcRow,index) ); //the specified row/column
                 statistics();
             }
 
-            //mode
+            //Calculating the mode
             else if (input == 3) {
                 if (calcAll) {
-                    System.out.println( mode() );
+                    System.out.println( mode() ); //the entire table
                 }
-                else System.out.println( mode(calcRow,index) );
+                else System.out.println( mode(calcRow,index) ); //the specified row/column
                 statistics();
             }
 
@@ -473,6 +499,7 @@ public class Spreadsheet<T> {
                 mainMenu();
             }
 
+            //Exit the program
             else if (input == 5) {
                 s = "Are you sure? (y or n)  ";
                 System.out.print(s);
@@ -483,32 +510,74 @@ public class Spreadsheet<T> {
                 else System.out.println("\n~~ Hope ya had a great time!");
             }
 
-            //error messages
+            //Error message for invalid inputs
             else {
-
+                System.out.println("Your selection is not an option. Please enter one of the options.");
+                edit();
             }
     }
 
+    //Sets (r,c) to newVal
     public Comparable set(int r, int c, Comparable newVal) {
         Comparable retVal = _table[r][c];
         _table[r][c] = newVal;
         return retVal;        
     }
 
+    //Removes value at (r,c)
     public Comparable remove(int r, int c) {
         Comparable retVal = _table[r][c];
         _table[r][c] = "";
         return retVal;
     }
 
+    //Removes a row or column at specified index
+    //If removeRow is true, remove row at index
+    //                false, remove column at index
     public void remove(boolean removeRow, int index) {
-        
+        Comparable[][] temp;
+        if (removeRow) {  
+            //Removing arow 
+            numRows--;
+            temp = new Comparable[numRows][numCols];
+            for (int i = numRows - 1; i > index; i--) {
+                for (int j = 1; j < numCols; j++) {
+                    temp[i-2][j] = _table[i-1][j]; 
+                } 
+            }
+            for (int i = index - 1; i > 0; i--) {
+                for (int j = 1; j < numCols; j++) {
+                    temp[i][j] = _table[i][j];
+                }
+            }
+        }
+        else {
+            //Removing a column
+            numCols--;
+            temp = new Comparable[numRows][numCols];
+            for (int i = numCols - 1; i > index; i--) {
+                for (int j = 1; j < numRows; j++) {
+                    temp[j-2][i] = _table[j][i-1];
+                }
+            }
+            for (int i = index - 1; i > 0; i--) {
+                for (int j = 1; j < numRows; j++) {
+                    temp[j][i] = _table[j][i];
+                }
+            }
+        }
+         _table = temp;
+    }
     }
 
+    //Adds a row or column at specified index
+    //If removeRow is true, add row at index
+    //                false, add column at index
     public void add(boolean addRow,int index) {
         Comparable[][] temp;
-        if (addRow) {
-        numRows++;
+        if (addRow) {  
+            //Adding an empty row 
+            numRows++;
             temp = new Comparable[numRows][numCols];
             for (int i = numRows - 1; i > index; i--) {
                 for (int j = 1; j < numCols; j++) {
@@ -522,6 +591,7 @@ public class Spreadsheet<T> {
             }
         }
         else {
+            //Adding an empty column
             numCols++;
             temp = new Comparable[numRows][numCols];
             for (int i = numCols - 1; i > index; i--) {
@@ -538,6 +608,7 @@ public class Spreadsheet<T> {
          _table = temp;
     }
 
+    //Utilized insertion sort to sort an array in ascending order
     public void insertionSort(double[] data) {
         for( int partition = 1; partition < data.length; partition++ ) {
 
@@ -552,6 +623,7 @@ public class Spreadsheet<T> {
         }
     }
 
+    //-------------------------------
     public double mean() {
         int totalNum = (numRows - 1) * (numCols - 1);
         double sum = 0;
