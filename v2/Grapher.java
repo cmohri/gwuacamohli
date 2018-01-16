@@ -3,6 +3,11 @@ import java.io.PrintWriter;
 import cs1.Keyboard;
 import java.lang.Math;
 
+/***
+Grapher allows the user to graph a function that is in terms of x. 
+It uses Parser to parse the user's input for the equation.
+ ***/
+
 public class Grapher    
 {
     //instance variables:
@@ -80,11 +85,47 @@ public class Grapher
         return foo;
     }//end toString()
 
-    //method graphsthe function that is entered
+    //method tests whether a String input is a "goodeq"
+    public boolean badEq(String eq){
+	boolean badeq = false;
+	for (int ind = 0; ind < eq.length(); ind++){
+            String chr = eq.substring(ind, ind+1);
+	    //System.out.println(chr);
+            if ((!chr.equals("1")
+		 && !chr.equals("2")
+		 && !chr.equals("3")
+		 && !chr.equals("4")
+		 && !chr.equals("5")
+		 && !chr.equals("6")
+		 && !chr.equals("7")
+		 && !chr.equals("8")
+		 && !chr.equals("9")
+		 && !chr.equals("0")
+		 && !chr.equals("x")
+		 && !chr.equals(" ")
+		 && !chr.equals("+")
+		 && !chr.equals("-")
+		 && !chr.equals("^")
+		 ) == false)
+		{
+		}
+	    else badeq = true;
+	}
+	return badeq;
+    }
+
+    //method graphs the function that is entered
     public void plotPoints(){
-	System.out.println("Enter desired equation. \n\t1. Must be in terms of x\n\t2. Be careful with spaces");
+	System.out.println("Enter desired equation. \n\t1. Must be in terms of x\n\t2. Parenthesis not accepted");
 	System.out.print("y= ");
 	String eq = Keyboard.readString();
+	while (badEq(eq)){
+	    System.out.println("Please enter an equation that follows guidelines.");
+	    System.out.print("y= ");
+	    eq = Keyboard.readString();
+	}
+	
+
 	equation = eq;
 	for (int x = xmin; x <= xmax; x++){
 	    int y = Parser.input(eq, x);
@@ -179,7 +220,8 @@ public class Grapher
     //method calculates zeroes within the domain using a for-loop
     //precondition: equation has already been defined
     public void calcZeroes() {
-	String printStr = "zeroes: ";
+	String printStr = "x-intercepts (limitted to the domain of -2^10 to 2&10): ";
+	int origLen = printStr.length();
 	for (int x = -2^10; x < Math.pow(2, 10); x++){
             int y = Parser.input(equation, x);
             if (y == 0){
@@ -187,8 +229,9 @@ public class Grapher
             }
         }
 	//get rid of any additional commas:
-	if (printStr.length() > 8) 
+	if (printStr.length() > origLen) 
 	    printStr = printStr.substring(0, printStr.length() - 2);
+	else printStr += "none";
 	System.out.println(printStr);
 	
     }//end calcZeroes()
@@ -211,7 +254,6 @@ public class Grapher
 	    writer.close();
 	    System.out.println("Succesfully downloaded " + equation + "_" + type + ".txt!");
 	} catch (Exception e){ System.out.println("Unable to download.");}
-	
     }//end download
 	
     //method calls Table
@@ -253,11 +295,12 @@ public class Grapher
 	driver();
     }//end driver()
 
+    /*
     //main method
     public static void main (String[] args) {
 	Grapher foo = new Grapher();
 	foo.plotPoints();
 	foo.driver();
     }//end main method
-
+    */
 }//end class Grapher
