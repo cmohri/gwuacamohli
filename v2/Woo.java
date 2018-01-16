@@ -35,7 +35,7 @@ public class Woo{
 	    System.out.println(description());
 	}
 	else {	    
-	    System.out.println("Exitting...");
+	    System.out.println("Exiting Mathetmatical Utility ...");
 	    return;
 	}
 	driver();
