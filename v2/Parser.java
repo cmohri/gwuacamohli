@@ -132,9 +132,9 @@ public class Parser {
     }//end input(String eq, int xval)
 
 	//sorts a String input into a int, double, or String output
-	public static Object input() {
+	public static Comparable input() {
 		String in;
-		Object output;
+		Comparable output;
 
 		in = Keyboard.readString();
 

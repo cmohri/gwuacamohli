@@ -28,13 +28,13 @@ public class Spreadsheet<T> {
     private final static int DEFAULT_SIZE = 1;
 
     private int numRows, numCols;
-    private Object[][] _table;
+    private Comparable[][] _table;
 
     public Spreadsheet(){
         newTable();
         numRows++;
         numCols++;
-        _table = new Object[numRows][numCols];
+        _table = new Comparable[numRows][numCols];
     }
 
     public void newTable() {
@@ -84,7 +84,7 @@ public class Spreadsheet<T> {
 //sort input to String, int, double
     public void filler() {
         String s, in;
-        Object input = "";
+        Comparable input = "";
 
         for (int i = 1; i < numRows; i++) {
             for (int j = 1; j < numCols; j++) {
@@ -93,7 +93,6 @@ public class Spreadsheet<T> {
                 System.out.print(s);
 
                 input = Parser.input();
-
                 set(i,j,input);
             }
         }
@@ -104,7 +103,7 @@ public class Spreadsheet<T> {
 
     public void filler(boolean fillRow,int index) {
         String s;
-        Object input;
+        Comparable input;
 
         //Filling the new Row
         if (fillRow) {
@@ -166,15 +165,18 @@ public class Spreadsheet<T> {
     public void edit(){
         String s;
         int r,c;
-        Object input;
+        Comparable input;
         
             s = "\nChoose a following option to edit the table:\n";
             s += "\t1: Edit value in a slot\n";
             s += "\t2: Remove value at a slot\n";
             s += "\t3: Add a row\n";
             s += "\t4: Add a column\n"; 
-            s += "\t5: Back to main menu\n";
-            s += "\t6: Exit the program\n";
+            s += "\t5: Remove a row\n"; 
+            s += "\t6: Remove a column\n"; 
+            s += "\t7: Sort data\n"; 
+            s += "\t8: Back to main menu\n";
+            s += "\t9: Exit the program\n";
             s += "Your selection:  ";
             System.out.print(s);
             
@@ -223,7 +225,7 @@ public class Spreadsheet<T> {
                 System.out.print(s);
                 r = Keyboard.readInt();
 
-                addRow(r);
+                addRowCol(true,r);
                 System.out.println("\n...New row " + r + " inserted...\n" + this);
                 filler(true,r);
 
@@ -237,19 +239,95 @@ public class Spreadsheet<T> {
                 System.out.print(s);
                 c = Keyboard.readInt();
 
-                addCol(c);
+                addRowCol(false,c);
                 System.out.println("\nNew column " + c + " inserted...\n" + this);
                 filler(false,c);
 
                 edit();
             }
 
-            //Back to main menu!
+            //Remove a row
             else if (input == 5) {
                 mainMenu();
             }
 
+            //Remove a column
             else if (input == 6) {
+                mainMenu();
+            }
+
+            //Sort data
+            else if (input == 7) {
+
+                s = "\nSort data of (in ascending order)...\n";
+                s += "\t1: a specified row\n";
+                s += "\t2: a specified column\n";
+                s += "\t3: every value in the table\n";
+                s += "Your selection:  ";
+                System.out.print(s);
+                input = Keyboard.readInt();
+
+                if (input == 1) {
+                    s += "\tSpecify row number: ";
+                    System.out.print(s);
+                    r = Keyboard.readInt();
+
+                    double[] temp = new double[numCols - 1];
+                    for (int i = 1 ; i < numCols; i++) {
+                        temp[i - 1] = (double)_table[r][i];
+                    }
+                    insertionSort(temp);
+                    for (int i = 1 ; i < numCols; i++) {
+                        _table[r][i] = temp[i - 1];
+                    }
+
+                    System.out.println("...Displaying sorted table...\n" + this);
+                }
+
+                if (input == 2) {
+                    s += "\tSpecify column number: ";
+                    System.out.print(s);
+                    c = Keyboard.readInt();
+
+                    double[] temp = new double[numRows - 1];
+                    for (int i = 1 ; i < numRows; i++) {
+                        temp[i - 1] = (double)_table[i][c];
+                    }
+                    insertionSort(temp);
+                    for (int i = 1 ; i < numRows; i++) {
+                        _table[i][c] = temp[i - 1];
+                    }
+
+                    System.out.println("...Displaying sorted table...\n" + this);
+                }
+
+
+                if (input == 3) {
+                    int placeholder = 0;
+                    double[] temp = new double[(numRows - 1)*(numCols - 1)];
+                    for (int i = 1; i < numRows; i++) {
+                        for (int j = 1; j < numCols; j++) {
+                            temp[placeholder] = (double)_table[i][j];
+                            placeholder++;
+                        }
+                    }
+                    insertionSort(temp);
+                    placeholder = 0;
+                    for (int i = 1; i < numRows; i++) {
+                        for (int j = 1; j < numCols; j++) {
+                            _table[i][j] = temp[placeholder];
+                            placeholder++;
+                        }
+                    }
+                }
+            }
+
+            //Back to main menu!
+            else if (input == 8) {
+                mainMenu();
+            }
+
+            else if (input == 9) {
                 s = "Are you sure? (y or n)  ";
                 System.out.print(s);
                 input = Keyboard.readString();
@@ -263,14 +341,13 @@ public class Spreadsheet<T> {
             else {
 
             }
-            
     }
 
     public void statistics() {
         String s;
         boolean calcRow = false, calcAll = false;
         int index = 0;
-        Object input, input2 = 0;
+        Comparable input, input2 = 0;
         
             s = "\nWhat would you like to calculate:\n";
             s += "\t1: Mean\n";
@@ -297,6 +374,13 @@ public class Spreadsheet<T> {
                 System.out.print(s);
                 index = Keyboard.readInt();
                 calcRow = true;
+
+                for (int i = 1; i < numCols; i++) {
+                    if (_table[index][i] instanceof String) {
+                        System.out.println("Error: Invalid data type in selected row.  Returning to the previous menu.");
+                        statistics();
+                    }
+                }
             }
 
             else if (input2 == 2) {
@@ -304,10 +388,26 @@ public class Spreadsheet<T> {
                 System.out.print(s);
                 index = Keyboard.readInt();
                 calcRow = false;
+
+                for (int i = 1; i < numRows; i++) {
+                    if (_table[i][index] instanceof String) {
+                        System.out.println("Error: Invalid data type in selected column.  Returning to the previous menu.");
+                        statistics();
+                    }
+                }
             }
 
             else if (input2 == 3) {
                 calcAll = true;
+
+                for (int i = 1; i < numRows; i++) {
+                    for (int j = 1; j < numCols; j++) {
+                        if (_table[i][j] instanceof String) {
+                        System.out.println("Error: Invalid data type in the table.  Returning to the previous menu.");
+                        statistics();
+                        }
+                    }
+                }
             }
 
             else {
@@ -366,48 +466,49 @@ public class Spreadsheet<T> {
             }
     }
 
-    public Object set(int r, int c, Object newVal) {
-        Object retVal = _table[r][c];
+    public Comparable set(int r, int c, Comparable newVal) {
+        Comparable retVal = _table[r][c];
         _table[r][c] = newVal;
         return retVal;        
     }
 
-    public Object remove(int r, int c) {
-        Object retVal = _table[r][c];
+    public Comparable remove(int r, int c) {
+        Comparable retVal = _table[r][c];
         _table[r][c] = "";
         return retVal;        
     }
 
-    public void addRow(int r) {
+    public void addRowCol(boolean addRow,int index) {
+        Comparable[][] temp;
+        if (addRow) {
         numRows++;
-        Object[][] temp = new Object[numRows][numCols];
-        for (int i = numRows - 1; i > r; i--) {
-            for (int j = 1; j < numCols; j++) {
-                temp[i][j] = _table[i-1][j]; 
-            } 
-        }
-        for (int i = r - 1; i > 0; i--) {
-            for (int j = 1; j < numCols; j++) {
-                temp[i][j] = _table[i][j];
+            temp = new Comparable[numRows][numCols];
+            for (int i = numRows - 1; i > index; i--) {
+                for (int j = 1; j < numCols; j++) {
+                    temp[i][j] = _table[i-1][j]; 
+                } 
+            }
+            for (int i = index - 1; i > 0; i--) {
+                for (int j = 1; j < numCols; j++) {
+                    temp[i][j] = _table[i][j];
+                }
             }
         }
-        _table = temp;
-    }
-
-    public void addCol(int c) {
-        numCols++;
-        Object[][] temp = new Object[numRows][numCols];
-            for (int i = numCols - 1; i > c; i--) {
+        else {
+            numCols++;
+            temp = new Comparable[numRows][numCols];
+            for (int i = numCols - 1; i > index; i--) {
                 for (int j = 1; j < numRows; j++) {
                     temp[j][i] = _table[j][i-1];
                 }
             }
-            for (int i = c - 1; i > 0; i--) {
+            for (int i = index - 1; i > 0; i--) {
                 for (int j = 1; j < numRows; j++) {
                     temp[j][i] = _table[j][i];
                 }
             }
-            _table = temp;
+        }
+         _table = temp;
     }
 
     public void insertionSort(double[] data) {
@@ -460,6 +561,7 @@ public class Spreadsheet<T> {
         for (int i = 1; i < numRows; i++) {
             for (int j = 1; j < numCols; j++) {
                 temp[placeholder] = (double)_table[i][j];
+                placeholder++;
             }
         }
         insertionSort(temp);
@@ -499,6 +601,7 @@ public class Spreadsheet<T> {
         for (int i = 1; i < numRows; i++) {
             for (int j = 1; j < numCols; j++) {
                 temp[placeholder] = (double)_table[i][j];
+                placeholder++;
             }
         }
         insertionSort(temp);
