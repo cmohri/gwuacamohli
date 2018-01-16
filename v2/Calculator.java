@@ -1,7 +1,6 @@
-/* to-do
+/* To-do
    1. try/exceptions
-   2. create method to parse by * and / --> return output into a new arraylist 
-   to evaluate first (PEMDAS) and then parse + evaluate by +/-
+   2. PEMDAS and then parse + evaluate by +/-
 */
 
 import cs1.Keyboard;
@@ -46,7 +45,7 @@ public class Calculator {
 	//     System.out.println(temparray[i]);
 	// }
 	
-	//for loop goes through entire parsed array
+	//for loop to evaluate all exponents before +,-,*,/
 	for (int i = 0; i < temparray.length; i++){
 	    //if "^" --> 1. get degree 2. get base number 3. raise base to degree
 	    if (temparray[i].indexOf("^") >= 0){
@@ -93,8 +92,6 @@ public class Calculator {
 		final_output /= num;
 	    }
 	}
-    
-
 	return final_output;
     }//end Calculator
 
@@ -102,10 +99,11 @@ public class Calculator {
 	System.out.println("Enter a math expression. \n\t1. Acceptable operations are: +, - , * , / , ^  \n\t2. PEMDAS rules are not yet followed"); 
 	String expression = Keyboard.readString();
 	double answer = Calculator(expression);
+	System.out.print("Answer: ");
 	System.out.println(answer);
 
-	System.out.println("Would you like to calculate another expression?");
-	System.out.println("Select an option: \n\t1. Yes  \n\t2. No"); 
+	System.out.println("\nWould you like to calculate another expression?");
+	System.out.println("Select an option and press enter: \n\t1. Yes  \n\t2. No"); 
 	int choice = Keyboard.readInt();
 	if (choice == 1){
 	    calculate();
