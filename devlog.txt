@@ -135,9 +135,7 @@ Jessica :: Decided to finally set aside PEMDAS.
 2018-01-15
 --------------------------------------------------------------
 Clara :: Worked on making code more robust; took into consideration user inputs that would not work. 
-Wenting :: Completed code for calculating statistics in mean(), median(), mode(). Debugged such that both int and double values can be in said calculations.
-	   Added the remove row, remove column, and sort data functionality to Spreadsheet.
-	   Spreadsheet is now a working file with each method completely. Now awaiting more testing...
+Wenting :: Completed code for calculating statistics in mean(), median(), mode(). Debugged such that both int and double values can be in said calculations. Added the remove row, remove column, and sort data functionality to Spreadsheet. Spreadsheet is now a working file with each method completely. Now awaiting more testing...
 Jessica :: Added try/catch block to deal with invalid math expressions. Wrote while loop in case user attempts to select an invalid option (input a number other than 1 or 2). However, still need to figure out what to do if user tries to input something other than an int (the Error reading int data, MIN_VALUE value returned. error).
 
 ==============================================================
@@ -146,6 +144,6 @@ Jessica :: Added try/catch block to deal with invalid math expressions. Wrote wh
 2018-01-16
 --------------------------------------------------------------
 Clara :: Worked on making code more robust, updated toString() method for Spreadsheet. Fixed an error in Grapher; now, equations are stripped of white space to have more robust and consistent code. Tested code on Java 8, and it worked.
-Wenting :: 
+Wenting :: Finalized and commented codes for mean, median, mode. Incorporated try and catch error messages to prevent crashing for Spreadsheet. Updated a detailed flowchart for Spreadsheet. Test ran our project with a few experimental duckies and received feedback.
 Jessica :: Connected Calculator to driver file. If user exits out of Calculator, driver file is called and user is returned back to the mathematical utility main menu. Edited and wrote clearer user instructions. Added white space / fixed formatting to be easily understood and followed by users. 
 ==============================================================

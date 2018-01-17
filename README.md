@@ -45,5 +45,8 @@ $ java Woo
 **Spreadsheet**....
 * Input "<# of Rows> by <# of Columns>", with rows starting from index 1 and increasing downwards, and columns starting from index 1 and increasing to the right.
 * An empty table will be displayed with the appropriate number of rows and columns labeled. User will then fill the table row by row by typing the desired stored object in the grid. 
-* A filled graph will be displayed. User can request to get the value at a specified slot (type "get" in the shell), set a value at a specified slot ("set"), remove a value ("remove"_, add another row at the specified index ("addRow"), and add another column at the specified index ("addCol").
-* User can request statistics (mean, median, mode) of a specified row, column, or every value in the table!
+    NOTE: Spreadsheet will only take ints, doubles, or Strings as a storable value!
+* A filled graph will be displayed. User can choose a functionality in the main menu by entering the corresponding number (ex. 1, 2, etc...). User will be redirected to the edit or statistics menu. Once again, enter the number corresponding to the functionality you wish to use for magic to happen.
+* User can edit the graph (add a row, remove a row, etc.) at a specified index and request statistics (mean, median, mode) of a specified row, column, or every value in the table!
+    NOTE: Functionalities including sort and statistics calculations only function on ints and doubles stored in the table. Sorting a list of int and doubles returns a list of doubles and shows up as doubles in the displayed list after the sorting.
+    NOTE: Mode returns the most frequent value in the specified data set. However, when there are more than one mode, the smallest mode will be returned. Similarly, when there is no mode, the smallest number in the specified data set will be returned.
