@@ -125,7 +125,7 @@ public class Grapher
 	    eq = Keyboard.readString();
 	}
 	
-	equation = eq;
+	equation = eq.trim();
 	for (int x = xmin; x <= xmax; x++){
 	    int y = Parser.input(eq, x);
 	    if (y <= ymax && y >= ymin){
