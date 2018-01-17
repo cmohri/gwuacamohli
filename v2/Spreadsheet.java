@@ -70,25 +70,30 @@ public class Spreadsheet {
         }
     }     
 
-    //Overwrites toString() to return the table with each row 
-    //and column labeled starting from 1
+    //Overwrites toString() to return the table with each row                          
+    //and column labeled starting from 1                                               
     public String toString(){
         String retStr = "\t";
         for (int n = 1; n < numCols; n++) {
-            retStr += n + "\t"; 
+            retStr += n + "\t";
         }
-        retStr += "\n\n";
+        retStr += "\n\t ";
+        for (int n = 1; n < numCols; n++) {
+            retStr += "--------";
+        }
+        retStr += "\n\t|\n";
         for (int i = 1; i < numRows; i++) {
-            retStr += i + "\t";
+            retStr += i + "\t|";
             for (int j = 1; j < numCols; j++) {
-                if (_table[i][j] == null) 
+                if (_table[i][j] == null)
                     retStr += "\t";
-                else retStr += _table[i][j] + "\t"; 
+                else retStr += _table[i][j] + "\t";
             }
-            retStr += "\n\n";
+            retStr += "\n\t|\n";
         }
         return retStr + "\b";
     }
+
 
     //Fills each slot with a user input
     public void filler() {
