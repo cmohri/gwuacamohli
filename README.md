@@ -37,13 +37,13 @@ $ java Woo
 * A graph generated from the equation will be displayed. User can then select, from a list, to customize viewing window, calculate x- and y- intercepts, download the graph to the same directory as the program, view a table of the equation, input a new equation, or exit the program. 
 
 **Calculator**....
-1. Input an expression as one would enter on a simple scientific calculator in the order user would like.
+* Input an expression as one would enter on a simple scientific calculator in the order user would like.
 	   (ex. 3 + 3 / 3 would result in 2)
 	NOTE: only +,-,*,/,^ are acceptable operations
-2.  The result will be displayed in the shell.
+*  The result will be displayed in the shell.
 
-   * Spreadsheet....
-	i) Input "<# of Rows> by <# of Columns>", with rows starting from index 1 and increasing downwards, and columns starting from index 1 and increasing to the right.
-	ii) An empty table will be displayed with the appropriate number of rows and columns labeled. User will then fill the table row by row by typing the desired stored object in the grid. 
-	iii) A filled graph will be displayed. User can request to get the value at a specified slot (type "get" in the shell), set a value at a specified slot ("set"), remove a value ("remove"_, add another row at the specified index ("addRow"), and add another column at the specified index ("addCol").
-	iv) User can request statistics (mean, median, mode) of a specified row, column, or every value in the table!
+**Spreadsheet**....
+* Input "<# of Rows> by <# of Columns>", with rows starting from index 1 and increasing downwards, and columns starting from index 1 and increasing to the right.
+* An empty table will be displayed with the appropriate number of rows and columns labeled. User will then fill the table row by row by typing the desired stored object in the grid. 
+* A filled graph will be displayed. User can request to get the value at a specified slot (type "get" in the shell), set a value at a specified slot ("set"), remove a value ("remove"_, add another row at the specified index ("addRow"), and add another column at the specified index ("addCol").
+* User can request statistics (mean, median, mode) of a specified row, column, or every value in the table!
