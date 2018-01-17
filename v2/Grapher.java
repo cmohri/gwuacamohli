@@ -291,10 +291,12 @@ public class Grapher
 	    plotPoints();
 	}
 	else {
-	    System.out.println("Exiting...");
-	    return; 
+	    System.out.println("Exiting out of grapher...");
+	    System.out.println("Returning back to main menu\n");
+	    Woo zoo = new Woo();
+	    zoo.driver();
 	}
-	driver();
+
     }//end driver()
 
     /*
