@@ -159,7 +159,7 @@ public class Spreadsheet {
         s = "\nWhat would you like to do next?\n";
         s += "\t1: Edit the table\n";
         s += "\t2: Calculate statistics\n";
-        s += "\t3: Back to Utility menu\n";
+        s += "\t3: Return to Utility menu\n";
         s += "Your selection:  ";
         System.out.print(s);
         input = Keyboard.readInt();
@@ -175,7 +175,7 @@ public class Spreadsheet {
 
         //Exit the program
         else if (input == 3) {
-            System.out.println("\nReturning back to Utility menu...\n");
+            System.out.println("\nReturning to Utility menu...\n");
 		    Woo zoo = new Woo();
 		    zoo.driver();
 	}
@@ -200,8 +200,8 @@ public class Spreadsheet {
             s += "\t5: Remove a row\n"; 
             s += "\t6: Remove a column\n"; 
             s += "\t7: Sort data\n"; 
-            s += "\t8: Back to main menu\n";
-            s += "\t9: Exit the program\n";
+            s += "\t8: Back to Spreadsheet main menu\n";
+            s += "\t9: Return to Utility menu\n";
             s += "Your selection:  ";
             System.out.print(s);
             
@@ -457,7 +457,7 @@ public class Spreadsheet {
                     edit();
                 }
                 else {
-		    System.out.println("\nBack to Utility menu...\n");
+		    System.out.println("\nReturning to Utility menu...\n");
 		    Woo zoo = new Woo();
 		    zoo.driver();
 		}
@@ -484,8 +484,8 @@ public class Spreadsheet {
             s += "\t1: Mean\n";
             s += "\t2: Median\n";
             s += "\t3: Mode\n";
-            s += "\t4: Back to main menu\n";
-            s += "\t5: Exit the program\n";
+            s += "\t4: Back to Spreadsheet main menu\n";
+            s += "\t5: Return to Utility menu\n";
             s += "Your selection:  ";
             System.out.print(s);
             input = Keyboard.readInt();
@@ -504,7 +504,7 @@ public class Spreadsheet {
                     edit();
                 }
                 else {
-		    System.out.println("\nBack to Utility menu...\n");
+		    System.out.println("\nReturning to Utility menu...\n");
 		    Woo zoo = new Woo();
 		    zoo.driver();
 		}
@@ -626,7 +626,7 @@ public class Spreadsheet {
                 if (s.equals("n")) {
                     edit();
                 }
-                else System.out.println("\nBack to Utility menu...\n");
+                else System.out.println("\nReturning to Utility menu...\n");
 		Woo zoo = new Woo();
 		zoo.driver();
             }
