@@ -12,22 +12,27 @@ OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Being able to take a String input and convert it into something that the computer can understand and input x values into.
   This took creating the class Parser, which would convert a String into an array and then an ArrayList. Then, it would identify coefficients, degrees, and other useful parts to evaluate each term. Identifying key components of every term allowed us to divide it into mathematical parts that could actually yield values.
+- Being able to take in a String input and converting it into an interpretable mathematical expression for the computer.
+- Being able to interpret exponents from a string input expression, since String.split(" * ") doesn't cover exponents.
+- Learning how to use specific try/catch blocks to deal with invalid user inputs.
 - Being able to take (x, y) coordinates in the conventional axes and converting them into something that can be plotted on a 2D array. This took a lot of time writing on KtS's until the problem was actually resolved. This way, we could have negative x and y values for our graph.
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- We were unable to implement PEMDAS into Calculator, and instead remain on simple calculations that do not follow PEMDAS rules. 
+- After many attempts, we  were unable to implement PEMDAS into Calculator, and instead remain on simple calculations that do not follow PEMDAS rules.
+- When a user attempts to enter a data type other than an int when Calculator asks you to choose option 1 or 2, the error message "Error reading int data, MIN_VALUE value returned." appears, even though the conditional to deal with this continues to work properly. 
 - If we had more time, we would have added a functionality to Spreadsheet in which you could name rows and columns, and still do statistics for the rows and columns.
 - The graph does not show x and y axes. Rather, it only has the values on the bottom and left.
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Somehow, saying String.split(" + ") also splits based on the " - " (subtraction) sign. Despite consulting the Java API for the split method, there seems to be no explanation for this.
+- Likewise, String.split(" * ") manages to split based on the " + ", " - ", " / ", and " * " operations.
 - Learned how to overwrite/create a file in Java to the same directory. Would have liked to learn how to overwrite/create into a specific directory like Downloads, which would have made more sense.
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- No substantial mid-development design changes were made. We realized that some of the mathematical parts that we had set out to achieve were a lot, and instead focused on basic functionality.
+- No substantial mid-development design changes were made. We realized that some of the mathematical parts that we had set out to achieve (like following the rules of PEMDAS) were a lot, and instead focused on basic functionality.
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -49,7 +54,7 @@ LESSONS LEARNED
 --------------------------------------------------------------
 Clara :: Created Grapher. Several overloaded methods allow the user to choose the degree of the equation to be graphed, and then input coefficients for each degree. Limitted to adding polynomials, and domain/range cannot be changed.
 Wenting :: Created proposal
-Jessica :: 
+Jessica :: Planned general plan for Calculator (how to interpret string inputs, parse strings, etc.) on KtS.
 ==============================================================
 
 2018-01-05
@@ -85,14 +90,14 @@ Clara :: Implemented Parser in Grapher so that Grapher now takes a String input 
           Implemented this augmentation in Grapher, so that polynomials with negative signs can also be graphed
 Wenting :: Augmented user experience through incorporating texts and directions in Spreadsheet to guide the user
             Augmented Spreadsheet so that it can now offer functionalities such setting or removing a value at a slot and adding a row/column
-Jessica :: 
+Jessica ::  Created a parsing method specific for Calculator's needs instead of using Parser's. Created method to find base number to evaluate exponents. Fixed issues with spaces in user input. Calculator can evaluate basic mathematical expressions, even on doubles (but doesn't follow rules of PEMDAS) & takes in user input.
 ==============================================================
 
 2018-01-11
 --------------------------------------------------------------
 Clara :: Worked on improving range/domain for Grapher.java, but it still needs to become functional.
 Wenting :: 
-Jessica :: Created a parsing method specific for Calculator's needs instead of using Parser's. Created method to find base number to evaluate exponents. Fixed issues with spaces in user input. Calculator can evaluate basic mathematical expressions, even on doubles (but doesn't follow rules of PEMDAS) & takes in user input.
+Jessica :: Attempted to create method for interpreting parentheses (for PEMDAS). This has proven to be much more complex than expected. 
 ==============================================================
 
 2018-01-12
@@ -108,7 +113,7 @@ Clara :: Figured out how to properly graph on Grapher.java. The domain and range
          Fixed the toString() method for Grapher in compliance with these improvements.
 Wenting :: Improved the menus displayed in the terminal when selecting a function for Spreadsheet for user experience.
 	   Created all corresponding methods for each function and updated old functions to comply with variable name changes.
-Jessica :: 
+Jessica :: Continued attempting how to follow PEMDAS by creating several functions to interpret and slice out expressions within parentheses. However, difficult to make it work with the parsed array. 
 
 ==============================================================
 
@@ -123,7 +128,7 @@ Wenting :: Attached explanatory comments to each method and its variables.
 	   Finetuned SOP outputs to be consistent and explanatory in the terminal for user experience.
 	   Created input() in Parser.java that sorts any String input into an int, double, or String output.
 	   
-Jessica :: 
+Jessica :: Decided to finally set aside PEMDAS. 
 
 ==============================================================
 
@@ -142,5 +147,5 @@ Jessica :: Added try/catch block to deal with invalid math expressions. Wrote wh
 --------------------------------------------------------------
 Clara :: Worked on making code more robust, updated toString() method for Spreadsheet. Fixed an error in Grapher; now, equations are stripped of white space to have more robust and consistent code. Tested code on Java 8, and it worked.
 Wenting :: 
-Jessica :: 
+Jessica :: Connected Calculator to driver file. If user exits out of Calculator, driver file is called and user is returned back to the mathematical utility main menu. Edited and wrote clearer user instructions. Added white space / fixed formatting to be easily understood and followed by users. 
 ==============================================================
