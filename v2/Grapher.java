@@ -116,7 +116,7 @@ public class Grapher
 
     //method graphs the function that is entered
     public void plotPoints(){
-	System.out.println("Enter desired equation. \n\t1. Must be in terms of x\n\t2. Parenthesis not accepted");
+	System.out.println("Enter desired equation. \n\t1. Must be in terms of x\n\t2. Parenthesis not accepted\n\t3. Only integers are accepted");
 	System.out.print("y= ");
 	String eq = Keyboard.readString();
 	while (badEq(eq)){
@@ -125,7 +125,6 @@ public class Grapher
 	    eq = Keyboard.readString();
 	}
 	
-
 	equation = eq;
 	for (int x = xmin; x <= xmax; x++){
 	    int y = Parser.input(eq, x);
@@ -151,17 +150,20 @@ public class Grapher
     //allows user to change the viewing window
     public void setViewing(){
 	//display current viewing window:
+	System.out.println("------------------------------------------");
 	System.out.println("Current viewing window:");
 	System.out.println("xmin: " + xmin);
 	System.out.println("xmax: " + xmax);
 	System.out.println("ymin: " + ymin);
-	System.out.println("ymax: " + ymax + "\n");
-	System.out.println("Enter in the values for new viewing window. Values must be integers, and the absolute value of every input must be less than or equal to 20.");
+	System.out.println("ymax: " + ymax );
+	System.out.println("------------------------------------------");
+	System.out.println("Enter in values for new viewing window. \n\t1. Values must be integers\n\t2. Absolute value of every input must be less than or equal to 20");
 	//set new viewing window
 	setXmin();
 	setXmax();
 	setYmin();
 	setYmax();
+	System.out.println("------------------------------------------");
 	_graph = new String[ymax-ymin + 1][xmax - xmin + 1]; 
 	filler();
 	plotPoints(equation);	
@@ -173,8 +175,8 @@ public class Grapher
 	System.out.print("xmin: ");
 	int xmini;        
 	xmini = Keyboard.readInt();	
-        while (Math.abs(xmini) > 20){
-            System.out.println("\tInput number with absolute value <= 20.");
+        while (Math.abs(xmini) > 20 || xmini == Integer.MIN_VALUE){
+            System.out.println("\tInput integer with absolute value <= 20.");
             System.out.print("xmin: " );
             xmini = Keyboard.readInt();
         }
@@ -185,8 +187,8 @@ public class Grapher
     public void setXmax(){
 	System.out.print("xmax: ");
         int xmaxi = Keyboard.readInt();
-        while (Math.abs(xmaxi) > 20 || xmaxi <= xmin){
-            System.out.println("\tInput number with absolute value <= 20, and must be greater than xmin");
+        while (Math.abs(xmaxi) > 20 || xmaxi <= xmin || xmaxi == Integer.MIN_VALUE){
+            System.out.println("\tInput integer with absolute value <= 20, and must be greater than xmin");
             System.out.print("xmax: " );
             xmaxi = Keyboard.readInt();
         }
@@ -197,8 +199,8 @@ public class Grapher
     public void setYmin(){
 	System.out.print("ymin: ");
         int ymini = Keyboard.readInt();
-        while (Math.abs(ymini) > 20){
-            System.out.println("\tInput number with absolute value <= 20.");
+        while (Math.abs(ymini) > 20 || ymini == Integer.MIN_VALUE){
+            System.out.println("\tInput integer with absolute value <= 20.");
             System.out.print("ymin: " );
             ymini = Keyboard.readInt();
         }
@@ -209,8 +211,8 @@ public class Grapher
     public void setYmax(){
 	System.out.print("ymax: ");
         int ymaxi = Keyboard.readInt();
-        while (Math.abs(ymaxi) > 20 || ymaxi <= ymin){
-            System.out.println("\tInput number with absolute value <= 20, and must be greater than ymin");
+        while (Math.abs(ymaxi) > 20 || ymaxi <= ymin || ymaxi == Integer.MIN_VALUE){
+            System.out.println("\tInput integer with absolute value <= 20, and must be greater than ymin");
             System.out.print("ymax: " );
             ymaxi = Keyboard.readInt();
         }
@@ -220,7 +222,7 @@ public class Grapher
     //method calculates zeroes within the domain using a for-loop
     //precondition: equation has already been defined
     public void calcZeroes() {
-	String printStr = "x-intercepts (limitted to the domain of -2^10 to 2&10): ";
+	String printStr = "x-intercept (limitted to the domain of -2^10 to 2&10): ";
 	int origLen = printStr.length();
 	for (int x = -2^10; x < Math.pow(2, 10); x++){
             int y = Parser.input(equation, x);
@@ -298,9 +300,7 @@ public class Grapher
     /*
     //main method
     public static void main (String[] args) {
-	Grapher foo = new Grapher();
-	foo.plotPoints();
-	foo.driver();
+	System.out.println(Integer.MIN_VALUE);
     }//end main method
     */
 }//end class Grapher
