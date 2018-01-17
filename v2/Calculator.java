@@ -14,7 +14,8 @@ public class Calculator {
     }//end of parse()
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    //finds the base of every term of the expression
+    //~~~~~~~~~~~~~~~DETERMINE BASE OF EXPNT METHOD~~~~~~~~~~~~~~~~
+    //finds the base of every exponent of the expression
     public static double findBase(String term){
 	double retVal = 0;
 	int carrot = term.indexOf("^");
@@ -25,8 +26,9 @@ public class Calculator {
 	}
 	return retVal;
     }
-    
-    //Calculator
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    //~~~~~~~~~~~~~~~~~~~~~~~CALCULATOR~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     public static double Calculator(String expression){
 
 	double final_output;
@@ -89,10 +91,12 @@ public class Calculator {
 	}
 	return final_output;
     }//end Calculator
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    //~~~~~~~~~~~~~~~~~~IMPLMENTS CALCULATOR~~~~~~~~~~~~~~~~~~~~~~~
     public static void calculate(){
-	System.out.println("Enter a math expression. \n\t1. Acceptable operations are: +, - , * , / , ^  \n\t2. PEMDAS rules are not yet followed");
-	
+	System.out.println("Enter a math expression. \n\t1. Acceptable operations are: +, - , * , / , ^  \n\t2. PEMDAS rules are not yet followed \n\t3. Do not add an '=' at the end");
+       
 	String expression = Keyboard.readString();
 	
 	//if user attempts to input an invalid expression 
@@ -100,29 +104,31 @@ public class Calculator {
 	    double answer = Calculator(expression);
 	    System.out.print("Answer: ");
 	    System.out.println(answer);
-
-
 	    System.out.println("\nWould you like to calculate another expression?");
 	    System.out.println("Select an option and press enter: \n\t1. Yes  \n\t2. No"); 
-	    int choice = Keyboard.readInt();
-	   
+	    int option = Keyboard.readInt();
+	    
 	    //if user attempts to input a number other than 1 or 2
-	    while (choice != 1 && choice !=2){
-	    	System.out.println("Please choose an option. Option 1 or 2? \n\t1. Yes  \n\t2. No");
-	    	choice = Keyboard.readInt();
+	    while (option != 1 && option != 2){
+	    	System.out.println("Please choose an option. Would you like to enter another expression? \n\t1. Yes  \n\t2. No");
+	    	option = Keyboard.readInt();
 	    }
-	
-	    if (choice == 1){
+	    
+	    if (option == 1){
 	    	calculate();
-	    } else if (choice == 2) {
-	    	System.out.println("Exiting out of calculator");
+	    } else if (option == 2) {
+	    	System.out.println("Exiting out of calculator ...");
+		System.out.println("Returning back to main menu\n");
+		Woo zoo = new Woo();
+		zoo.driver();
 	    }
 	} catch (NumberFormatException e){
-	    System.out.println("Invalid expression. Please try again");
+	    System.out.println("Invalid expression. Please try again.");
 	    calculate();
 	}
     }
-    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     public static void main (String[] args){
 
 	/* // parse() test

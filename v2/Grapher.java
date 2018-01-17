@@ -291,7 +291,7 @@ public class Grapher
 	    plotPoints();
 	}
 	else {
-	    System.out.println("Exitting...");
+	    System.out.println("Exiting...");
 	    return; 
 	}
 	driver();
