@@ -178,9 +178,11 @@ public class Spreadsheet {
             //security check for all ints and doubles
 
         //Exit the program
-        else if (input == 3) 
-            System.out.println("\n~~ Hope ya had a great time!");
-
+        else if (input == 3) {
+            System.out.println("\nBack to main menu...\n");
+	    Woo zoo = new Woo();
+	    zoo.driver();
+	}
         //Error message for invalid inputs
         else {
             System.out.println("Your selection is not an option. Please enter one of the options.");
@@ -458,7 +460,11 @@ public class Spreadsheet {
                 if (input2.equals("n")) {
                     edit();
                 }
-                else System.out.println("\n~~ Hope ya had a great time!");
+                else {
+		    System.out.println("\nBack to main menu...\n");
+		    Woo zoo = new Woo();
+		    zoo.driver();
+		}
             }
 
             //Error message for invalid inputs
@@ -501,7 +507,11 @@ public class Spreadsheet {
                 if (s.equals("n")) {
                     edit();
                 }
-                else System.out.println("\n~~ Hope ya had a great time!");
+                else {
+		    System.out.println("\nBack to main menu...\n");
+		    Woo zoo = new Woo();
+		    zoo.driver();
+		}
                 return;
             }
 
@@ -620,7 +630,9 @@ public class Spreadsheet {
                 if (s.equals("n")) {
                     edit();
                 }
-                else System.out.println("\n~~ Hope ya had a great time!");
+                else System.out.println("\n~~Back to main menu...\n");
+		Woo zoo = new Woo();
+		zoo.driver();
             }
 
             //Error message for invalid inputs
