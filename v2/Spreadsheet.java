@@ -331,7 +331,7 @@ public class Spreadsheet {
             //Allows sorting for a specified row, column, or entire table
             else if (input == 7) {
 
-                s = "\nSort data of (in ascending order)...\n";
+                s = "\nSort table (in ascending order)...\n";
                 s += "\t1: a specified row\n";
                 s += "\t2: a specified column\n";
                 s += "\t3: every value in the table\n";
@@ -341,7 +341,7 @@ public class Spreadsheet {
 
                 //Sorting a row r
                 if (input == 1) {
-                    s += "\n\tSpecify row number: ";
+                    s += "\nSpecify row number: ";
                     System.out.print(s);
                     r = Keyboard.readInt();
 
@@ -352,21 +352,27 @@ public class Spreadsheet {
 
                     double[] temp = new double[numCols - 1];
                     for (int i = 1 ; i < numCols; i++) {
-                        temp[i - 1] = (double)_table[r][i];
+                        if (_table[r][i] instanceof String) {
+                            System.out.println("Error: Invalid data type exists in selected row.  Returning to the previous menu...");
+                            edit();
+                        }
+                        if(_table[r][i] instanceof Double)
+                            temp[i - 1] = (double)_table[r][i];
+                        else temp[i - 1] = (int)_table[r][i];
                     }
                     insertionSort(temp);
                     for (int i = 1 ; i < numCols; i++) {
                         _table[r][i] = temp[i - 1];
                     }
 
-                    System.out.println("...Displaying sorted table...\n" + this);
+                    System.out.println("\n...Displaying sorted table...\n" + this);
                     
                     edit();
                 }
 
                 //Sorting a column c
                 else if (input == 2) {
-                    s += "]\n\tSpecify column number: ";
+                    s += "\nSpecify column number: ";
                     System.out.print(s);
                     c = Keyboard.readInt();
 
@@ -377,14 +383,20 @@ public class Spreadsheet {
 
                     double[] temp = new double[numRows - 1];
                     for (int i = 1 ; i < numRows; i++) {
-                        temp[i - 1] = (double)_table[i][c];
+                        if (_table[i][c] instanceof String) {
+                            System.out.println("Error: Invalid data type exists in selected column.  Returning to the previous menu...");
+                            edit();
+                        }
+                        if (_table[i][c] instanceof Double)
+                            temp[i - 1] = (double)_table[i][c];
+                        else temp[i - 1] = (int)_table[i][c];
                     }
                     insertionSort(temp);
                     for (int i = 1 ; i < numRows; i++) {
                         _table[i][c] = temp[i - 1];
                     }
 
-                    System.out.println("...Displaying sorted table...\n" + this);
+                    System.out.println("\n...Displaying sorted table...\n" + this);
 
                     edit();
                 }
@@ -395,7 +407,15 @@ public class Spreadsheet {
                     double[] temp = new double[(numRows - 1)*(numCols - 1)];
                     for (int i = 1; i < numRows; i++) {
                         for (int j = 1; j < numCols; j++) {
-                            temp[placeholder] = (double)_table[i][j];
+
+                            if (_table[i][j] instanceof String) {
+                                System.out.println("Error: Invalid data type exists in selected column.  Returning to the previous menu...");
+                                edit();
+                            }
+                    
+                            if (_table[i][j] instanceof Double)
+                                temp[placeholder] = (double)_table[i][j];
+                            else temp[placeholder] = (int)_table[i][j];
                             placeholder++;
                         }
                     }
@@ -408,7 +428,7 @@ public class Spreadsheet {
                         }
                     }
 
-                    System.out.println("...Displaying sorted table...\n" + this);
+                    System.out.println("\n...Displaying sorted table...\n" + this);
 
                     edit();
                 }
@@ -463,6 +483,24 @@ public class Spreadsheet {
             System.out.print(s);
             input = Keyboard.readInt();
 
+            //Back to main menu!
+            if (input == 4) {
+                mainMenu();
+            }
+
+            //Exit the program
+            else if (input == 5) {
+                s = "Are you sure? (y or n)  ";
+                System.out.print(s);
+                s = Keyboard.readString();
+                if (s.equals("n")) {
+                    edit();
+                }
+                else System.out.println("\n~~ Hope ya had a great time!");
+                return;
+            }
+
+            //If calculation functions are selected, choose index
             if (input == 1 || input == 2 || input == 3) {
             s = "\nCalulate statistics on...\n";
             s += "\t1: a specified row\n";
@@ -530,7 +568,7 @@ public class Spreadsheet {
             //error message for invalid input for input2
             else {
                 System.out.println("Your selection is not an option. Returning to the previous menu...");
-                edit();
+                statistics();
             }
 
         //----------------------------------
@@ -540,6 +578,7 @@ public class Spreadsheet {
                     System.out.println( "Calculated mean:  " + mean() ); //the entire table
                 }
                 else System.out.println( "Calculated mean:  " + mean(calcRow,index) ); //the specified row/column
+                System.out.println("\nCurrent table:" + this);
                 statistics();
             }
 
@@ -549,6 +588,7 @@ public class Spreadsheet {
                     System.out.println( "Calculated median:  " + median() ); //the entire table
                 }
                 else System.out.println( "Calculated median:  " + median(calcRow,index) ); //the specified row/column
+                System.out.println("\nCurrent table:" + this);
                 statistics();
             }
 
@@ -558,6 +598,7 @@ public class Spreadsheet {
                     System.out.println( "Calculated mode:  " + mode() ); //the entire table
                 }
                 else System.out.println( "Calculated mode:  " + mode(calcRow,index) ); //the specified row/column
+                System.out.println("\nCurrent table:" + this);
                 statistics();
             }
 
@@ -706,6 +747,7 @@ public class Spreadsheet {
                 else sum += (int)_table[i][j];
             }
         }
+System.out.println(sum + "/" + totalNum);
         return sum / totalNum;
     }
 
@@ -729,7 +771,7 @@ public class Spreadsheet {
             //Calculating the mean of column index
             totalNum = numRows - 1;
             for (int i = 1; i < numRows; i++) {
-                if (_table[index][i] instanceof Double) 
+                if (_table[i][index] instanceof Double) 
                     sum += (double)_table[i][index];
                 else sum += (int)_table[i][index];
             }
@@ -754,11 +796,10 @@ public class Spreadsheet {
         }
         insertionSort(temp);
 
-        if (temp.length % 2 == 0) 
+        if (temp.length % 2 == 0) {
+System.out.println(temp[temp.length / 2]+"+"+temp[(temp.length / 2) -1]+"/2");
             return (temp[temp.length / 2] + temp[(temp.length / 2) - 1]) / 2;
-         else {
-             return temp[temp.length / 2];
-         }
+        } else return temp[temp.length / 2];
     }
 
     //Calculates the median of the values in a specified row or column
@@ -784,9 +825,10 @@ public class Spreadsheet {
         }
         insertionSort(temp);
 
-        if (temp.length % 2 == 0) 
+        if (temp.length % 2 == 0) {
+System.out.println(temp[temp.length / 2]+"+"+temp[(temp.length / 2) -1]+"/2");
             return (temp[temp.length / 2] + temp[(temp.length / 2) - 1]) / 2;
-         else {
+         } else {
              return temp[temp.length / 2];
          }
     }
