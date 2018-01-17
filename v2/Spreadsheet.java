@@ -75,23 +75,19 @@ public class Spreadsheet {
     public String toString(){
         String retStr = "\t";
         for (int n = 1; n < numCols; n++) {
-            retStr += n + "\t";
+            retStr += "\u001B[35m" + n + "\u001B[0m\t"; 
         }
-        retStr += "\n\t ";
-        for (int n = 1; n < numCols; n++) {
-            retStr += "--------";
-        }
-        retStr += "\n\t|\n";
+        retStr += "\n\n";
         for (int i = 1; i < numRows; i++) {
-            retStr += i + "\t|";
+            retStr += "\u001B[35m" + i + "\u001B[0m\t";
             for (int j = 1; j < numCols; j++) {
-                if (_table[i][j] == null)
+                if (_table[i][j] == null) 
                     retStr += "\t";
-                else retStr += _table[i][j] + "\t";
+                else retStr += _table[i][j] + "\t"; 
             }
-            retStr += "\n\t|\n";
+            retStr += "\n\n";
         }
-        return retStr + "\b";
+        return retStr;
     }
 
 
@@ -593,7 +589,7 @@ public class Spreadsheet {
                     System.out.println( "Calculated mean:  " + mean() ); //the entire table
                 }
                 else System.out.println( "Calculated mean:  " + mean(calcRow,index) ); //the specified row/column
-                System.out.println("\nCurrent table:" + this);
+                System.out.println("\nCurrent table:\n" + this);
                 statistics();
             }
 
@@ -603,7 +599,7 @@ public class Spreadsheet {
                     System.out.println( "Calculated median:  " + median() ); //the entire table
                 }
                 else System.out.println( "Calculated median:  " + median(calcRow,index) ); //the specified row/column
-                System.out.println("\nCurrent table:" + this);
+                System.out.println("\nCurrent table:\n" + this);
                 statistics();
             }
 
