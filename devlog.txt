@@ -14,7 +14,7 @@ OBSTACLES OVERCOME
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- 
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -27,6 +27,7 @@ MID-DEVELOPMENT DESIGN CHANGES
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Somehow, saying String.split(" + ") also splits based on the " - " (subtraction) sign. Despite consulting the Java API for the split method, there seems to be no explanation for this.
+- 
 
 
  ______   ______   __   __   __       ______   _______     
@@ -124,8 +125,7 @@ Jessica ::
 
 2018-01-15
 --------------------------------------------------------------
-Clara :: 
-	 Methods for Grapher now calculate the x- and y-intercepts.      
+Clara :: Worked on making code more robust; took into consideration user inputs that would not work. 
 Wenting :: Completed code for calculating statistics in mean(), median(), mode(). Debugged such that both int and double values can be in said calculations.
 	   Added the remove row, remove column, and sort data functionality to Spreadsheet.
 	   Spreadsheet is now a working file with each method completely. Now awaiting more testing...
