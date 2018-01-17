@@ -32,18 +32,15 @@ $ java Woo
 2. Follow instructions in shell…  
 
 **Grapher**....
-*Input a polynomial equation in the form ax^n + bx^n-1 + ...(ex. 3x^2 + 2x - 1)
+* Input a polynomial equation in the form ax^n + bx^n-1 + ...(ex. 3x^2 + 2x - 1)  
    NOTE: x should be the only variable inputted
-   A graph generated from the equation will be displayed. User can then select to modify the preset domain and range for the
-   graph by typing "edit domain" or "edit range" in shell.
-* User can request a table for the equation in the viewing window by typing "table" in the shell.
-* Users can request zeroes, y-intecepts, and slope by selecting from a list.
+* A graph generated from the equation will be displayed. User can then select, from a list, to customize viewing window, calculate x- and y- intercepts, download the graph to the same directory as the program, view a table of the equation, input a new equation, or exit the program. 
 
-   * Calculator....
-	i) Input an expression as one would enter on a simple scientific calculator in the order user would like.
+**Calculator**....
+1. Input an expression as one would enter on a simple scientific calculator in the order user would like.
 	   (ex. 3 + 3 / 3 would result in 2)
 	NOTE: only +,-,*,/,^ are acceptable operations
-	ii) The result will be displayed in the shell.
+2.  The result will be displayed in the shell.
 
    * Spreadsheet....
 	i) Input "<# of Rows> by <# of Columns>", with rows starting from index 1 and increasing downwards, and columns starting from index 1 and increasing to the right.
