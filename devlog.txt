@@ -11,17 +11,19 @@ Mathematical Utility
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Being able to take a String input and convert it into something that the computer can understand and input x values into.
-- Being able to take (x, y) coordinates in the conventional axes and converting them into something that can be plotted on a 2D array. (This took a lot of time, and a lot of paper)
+  This took creating the class Parser, which would convert a String into an array and then an ArrayList. Then, it would identify coefficients, degrees, and other useful parts to evaluate each term. Identifying key components of every term allowed us to divide it into mathematical parts that could actually yield values.
+- Being able to take (x, y) coordinates in the conventional axes and converting them into something that can be plotted on a 2D array. This took a lot of time writing on KtS's until the problem was actually resolved. This way, we could have negative x and y values for our graph.
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - We were unable to implement PEMDAS into Calculator, and instead remain on simple calculations that do not follow PEMDAS rules. 
 - If we had more time, we would have added a functionality to Spreadsheet in which you could name rows and columns, and still do statistics for the rows and columns.
-- 
+- The graph does not show x and y axes. Rather, it only has the values on the bottom and left.
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Somehow, saying String.split(" + ") also splits based on the " - " (subtraction) sign. Despite consulting the Java API for the split method, there seems to be no explanation for this.
+- Learned how to overwrite/create a file in Java to the same directory. Would have liked to learn how to overwrite/create into a specific directory like Downloads, which would have made more sense.
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
