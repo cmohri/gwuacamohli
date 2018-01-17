@@ -6,7 +6,7 @@ _**General Project Description**_
 This project functions as a basic mathematical utility. When the user runs the project, user can: 
 1. Graph a polynomial function in terms of x
   * Change domain and range
-  * Request zeroes and intercepts within the viewing window
+  * Request y-intercept and x-intercepts
   * Request to view a table of the viewing window
 2. Use a calculator for simple math
 3. Create a spreadsheet
@@ -17,7 +17,6 @@ _**Instructions for Running**_
 
 To COMPILE
 ~~~~
-$ cd ~/gwuacamohli/codes
 $ javac Woo.java
 ~~~~
 To RUN
@@ -25,6 +24,7 @@ To RUN
 $ java Woo
 ~~~~
 @-----------------------------------
+ **Instructions for Running**_
 1. Select desired functionality
 	1: Graphing Calculator
 	2: Simple Math Calculator
@@ -48,5 +48,5 @@ $ java Woo
     NOTE: Spreadsheet will only take ints, doubles, or Strings as a storable value!
 * A filled graph will be displayed. User can choose a functionality in the main menu by entering the corresponding number (ex. 1, 2, etc...). User will be redirected to the edit or statistics menu. Once again, enter the number corresponding to the functionality you wish to use for magic to happen.
 * User can edit the graph (add a row, remove a row, etc.) at a specified index and request statistics (mean, median, mode) of a specified row, column, or every value in the table!
-    NOTE: Functionalities including sort and statistics calculations only function on ints and doubles stored in the table. Sorting a list of int and doubles returns a list of doubles and shows up as doubles in the displayed list after the sorting.
-    NOTE: Mode returns the most frequent value in the specified data set. However, when there are more than one mode, the smallest mode will be returned. Similarly, when there is no mode, the smallest number in the specified data set will be returned.
+    * NOTE: Functionalities including sort and statistics calculations only function on ints and doubles stored in the table. Sorting a list of int and doubles returns a list of doubles and shows up as doubles in the displayed list after the sorting. Sorting uses insertion sort algorithm.
+    * NOTE: Mode returns the most frequent value in the specified data set. However, when there are more than one mode, the smallest mode will be returned. Similarly, when there is no mode, the smallest number in the specified data set will be returned.
