@@ -295,7 +295,9 @@ public class Grapher
 	    System.out.println("Returning back to main menu\n");
 	    Woo zoo = new Woo();
 	    zoo.driver();
+	    return;
 	}
+	driver();
 
     }//end driver()
 
