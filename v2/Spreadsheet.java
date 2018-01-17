@@ -159,7 +159,8 @@ public class Spreadsheet {
         s = "\nWhat would you like to do next?\n";
         s += "\t1: Edit the table\n";
         s += "\t2: Calculate statistics\n";
-        s += "\t3: Exit program\n";
+        s += "\t3: Back to Utility menu\n";
+        s += "\t4: Exit program\n";
         s += "Your selection:  ";
         System.out.print(s);
         input = Keyboard.readInt();
@@ -173,8 +174,12 @@ public class Spreadsheet {
             statistics();
             //security check for all ints and doubles
 
+        //Back to Woo.java
+        else if (input == 3) 
+            Woo.driver();
+
         //Exit the program
-        else if (input == 3) {
+        else if (input == 4) {
             System.out.println("\nBack to main menu...\n");
 	    Woo zoo = new Woo();
 	    zoo.driver();
@@ -760,7 +765,6 @@ public class Spreadsheet {
                 else sum += (int)_table[i][j];
             }
         }
-System.out.println(sum + "/" + totalNum);
         return sum / totalNum;
     }
 
@@ -810,7 +814,6 @@ System.out.println(sum + "/" + totalNum);
         insertionSort(temp);
 
         if (temp.length % 2 == 0) {
-System.out.println(temp[temp.length / 2]+"+"+temp[(temp.length / 2) -1]+"/2");
             return (temp[temp.length / 2] + temp[(temp.length / 2) - 1]) / 2;
         } else return temp[temp.length / 2];
     }
@@ -841,7 +844,6 @@ System.out.println(temp[temp.length / 2]+"+"+temp[(temp.length / 2) -1]+"/2");
         insertionSort(temp);
 
         if (temp.length % 2 == 0) {
-System.out.println(temp[temp.length / 2]+"+"+temp[(temp.length / 2) -1]+"/2");
             return (temp[temp.length / 2] + temp[(temp.length / 2) - 1]) / 2;
          } else {
              return temp[temp.length / 2];
