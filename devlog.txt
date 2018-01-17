@@ -15,21 +15,22 @@ OBSTACLES OVERCOME
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- We were unable to implement PEMDAS into Calculator, and instead remain on simple calculations that do not follow PEMDAS rules. 
+- If we had more time, we would have added a functionality to Spreadsheet in which you could name rows and columns, and still do statistics for the rows and columns.
 - 
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- 
+- Somehow, saying String.split(" + ") also splits based on the " - " (subtraction) sign. Despite consulting the Java API for the split method, there seems to be no explanation for this.
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- No substantial mid-development design changes were made. We realized that some of the mathematical parts that we had set out to achieve were a lot, and instead focused
+- No substantial mid-development design changes were made. We realized that some of the mathematical parts that we had set out to achieve were a lot, and instead focused on basic functionality.
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- Somehow, saying String.split(" + ") also splits based on the " - " (subtraction) sign. Despite consulting the Java API for the split method, there seems to be no explanation for this.
-- 
-
+- Dividing and conquering can be very helpful in making big projects. What we did was we divided up Grapher/Table, Calculator, and Spreadsheet. Then we helped each other out by reviewing the code of each and working together on each class. This process worked very well for writing a lot of code.
+- Testing code out on many different computers is good at finding errors. For example, one computer that we tested on had difficulty downloading a file with spaces in the name. This prompted us to remove whitespace from the equation attribute of Grapher, which in the long run made the code more robust and consistent in more than just one way. Previously, sometimes graphs would come out differently based on spaces.
 
  ______   ______   __   __   __       ______   _______     
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
