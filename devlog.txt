@@ -11,6 +11,7 @@ Mathematical Utility
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Being able to take a String input and convert it into something that the computer can understand and input x values into.
+- Being able to take (x, y) coordinates in the conventional axes and converting them into something that can be plotted on a 2D array. (This took a lot of time, and a lot of paper)
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -22,7 +23,7 @@ COOL STUFF LEARNED
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- No substantial mid-development design changes were made. We realized that some of the mathematical parts that we had set out to achieve were a lot, and instead focused
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -136,7 +137,7 @@ Jessica :: Added try/catch block to deal with invalid math expressions. Wrote wh
 
 2018-01-16
 --------------------------------------------------------------
-Clara :: Worked on making code more robust, updated toString() method for Spreadsheet
+Clara :: Worked on making code more robust, updated toString() method for Spreadsheet. Fixed an error in Grapher; now, equations are stripped of white space to have more robust and consistent code. Tested code on Java 8, and it worked.
 Wenting :: 
 Jessica :: 
 ==============================================================
