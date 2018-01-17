@@ -808,6 +808,7 @@ System.out.println(temp[temp.length / 2]+"+"+temp[(temp.length / 2) -1]+"/2");
     public double median(boolean calcRow, int index) {
         double[] temp;
         if (calcRow) {
+            //Calculating the median of row index            
             temp = new double[numCols - 1];
             for (int i = 1; i < numCols; i++) {
                 if (_table[index][i] instanceof Double) 
@@ -816,11 +817,12 @@ System.out.println(temp[temp.length / 2]+"+"+temp[(temp.length / 2) -1]+"/2");
             }
         }
         else {
+            //Calculating the median of column index
             temp = new double[numRows - 1];
             for (int i = 1; i < numRows; i++) {
-                if (_table[index][i] instanceof Double) 
-                    temp[i - 1] = (double)_table[index][i];
-                else temp[i - 1] = (int)_table[index][i];
+                if (_table[i][index] instanceof Double) 
+                    temp[i - 1] = (double)_table[i][index];
+                else temp[i - 1] = (int)_table[i][index];
             };
         }
         insertionSort(temp);
@@ -873,6 +875,7 @@ System.out.println(temp[temp.length / 2]+"+"+temp[(temp.length / 2) -1]+"/2");
         double[] temp;
 
         if (calcRow) {
+            //Calculating the mode of row index
             temp = new double[numCols - 1];
             for (int i = 1; i < numCols; i++) {
                 if (_table[index][i] instanceof Double) 
@@ -881,6 +884,7 @@ System.out.println(temp[temp.length / 2]+"+"+temp[(temp.length / 2) -1]+"/2");
             }
         }
         else {
+            //Calculating the mode of column index
             temp = new double[numRows - 1];
             for (int i = 1; i < numRows; i++) {
                 if (_table[i][index] instanceof Double) 

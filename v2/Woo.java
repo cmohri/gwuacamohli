@@ -59,7 +59,7 @@ public class Woo{
     //main method, executable
     public static void main(String[] args) {
 	//to make text bold:
-	System.out.println("\n\n\033[1mMathematical Utility:\033[0m\n\n");
+	System.out.println("\n\n\033[1m~~Mathematical Utility:\033[0m\n\n");
 	driver();	
     }//end main method
     
