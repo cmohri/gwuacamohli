@@ -125,9 +125,10 @@ public class Grapher
 	    eq = Keyboard.readString();
 	}
 	
-	equation = eq.trim();
+	equation = eq.replaceAll("\\s+","");
+
 	for (int x = xmin; x <= xmax; x++){
-	    int y = Parser.input(eq, x);
+	    int y = Parser.input(equation, x);
 	    if (y <= ymax && y >= ymin){
 		_graph[ ymax-y ][ x-xmin] = " •";
 	    }
