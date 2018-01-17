@@ -60,9 +60,9 @@ public class Woo{
     //main method, executable
     public static void main(String[] args) {
 
-	System.out.println("Team Gwuacamohli   Pd08\n Clara Mohri, Wenting Li, Jessica Wu brings to you....");
+	System.out.println("\nTeam Gwuacamohli   Pd08\nClara Mohri, Wenting Li, Jessica Wu brings to you....");
 	//to make text bold:
-	System.out.println("\n\n\033[1mMathematical Utility:\033[0m\n");
+	System.out.println("\n\033[1mMathematical Utility:\033[0m\n");
 	driver();	
     }//end main method
     
