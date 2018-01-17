@@ -131,40 +131,40 @@ public class Parser {
 	return eval( calcd);
     }//end input(String eq, int xval)
 
-	//sorts a String input into a int, double, o  tqaar String output
-	public static Comparable input() {
-		String in;
-		Comparable output;
+    //sorts a String input into a int, double, o  tqaar String output
+    public static Comparable input() {
+	String in;
+	Comparable output;
 
-		in = Keyboard.readString();
-
+	in = Keyboard.readString();
+	
         try {
             output = (int) Integer.parseInt(in);
         }
         catch (Exception e) { 
             try {
-				output = (double) Double.parseDouble(in);
-			}
-			catch (Exception elephant) {
-				output = in;
-			}
+		output = (double) Double.parseDouble(in);
+	    }
+	    catch (Exception elephant) {
+		output = in;
+	    }
         }
-		return output;
-	}
-
+	return output;
+    }
+    
     public static void main (String[] args){
 	/*
-	String eq1 = "3x^3+x^2+3";
+	  String eq1 = "3x^3+x^2+3";
 	System.out.println(eq1);
 	int finalval = input(eq1, -1);
 	System.out.print("input -1: ");
 	System.out.println(finalval);
-
+	
 	String eq2= "3x^2";
 	System.out.println(eq2);
 	System.out.print("input 0: ");
 	System.out.println(input(eq2, 0));
-
+	
 	String eq3= "5+5+5";
 	System.out.println(eq3);
 	System.out.print("input 0: ");
