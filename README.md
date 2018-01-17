@@ -23,8 +23,9 @@ To RUN
 ~~~~
 $ java Woo
 ~~~~
-@-----------------------------------
- **Instructions for Running**_
+@----------------------------------- 
+
+ _**Instructions for Running**_
 1. Select desired functionality
 	1: Graphing Calculator
 	2: Simple Math Calculator
