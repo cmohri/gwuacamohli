@@ -30,6 +30,10 @@ public class Spreadsheet {
     private int numRows, numCols;
     private Comparable[][] _table;
 
+    //===================================
+    //      ~INITIATOR FUNCTIONS~
+    //===================================
+
     //default constructor
     public Spreadsheet(){
         newTable();
@@ -115,10 +119,9 @@ public class Spreadsheet {
 
         //Filling the new Row
         if (fillRow) {
-            s = "\n";
            for (int i = 1; i < numCols; i++) {
                
-                s = "Enter a value at (" + index + "," + i + "):  ";
+                s = "\nEnter a value at (" + index + "," + i + "):  ";
                 System.out.print(s);
 
                 input = Parser.input();
@@ -142,6 +145,10 @@ public class Spreadsheet {
         s = "\n...Displaying filled table...\n";
         System.out.println(s + this);        
     }
+
+    //===================================
+    //         ~MENU FUNCTIONS~
+    //===================================
 
     //Contains selection to edit or calculate statistics
     public void mainMenu() {
@@ -208,6 +215,12 @@ public class Spreadsheet {
                 System.out.print(s);
                 c = Keyboard.readInt();
 
+                if ( (r >= numRows || r < 1) 
+                    || (c >= numCols || c < 1) ) {
+                    System.out.println("Error: Invalid input for index. Returning to to the previous menu...");
+                    edit();
+                }
+
                 s = "\t...to what?  ";
                 System.out.print(s);
                 input2 = Parser.input();
@@ -227,6 +240,13 @@ public class Spreadsheet {
                 s = "\tSpecify column number: ";
                 System.out.print(s);
                 c = Keyboard.readInt();
+
+                if ( (r >= numRows || r < 1) 
+                    || (c >= numCols || c < 1) ) {
+                    System.out.println("Error: Invalid input for index. Returning to to the previous menu...");
+                    edit();
+                }
+
                 remove(r,c);
                 System.out.println("\n...Removing value @slot(" + r + "," + c +")" + "...\n" + this);
                 
@@ -239,6 +259,11 @@ public class Spreadsheet {
                 s += "\tSpecify row index at which you want to insert the new row: ";
                 System.out.print(s);
                 r = Keyboard.readInt();
+
+                if  (r > numRows || r < 1) {
+                    System.out.println("Error: Invalid input for index. Returning to to the previous menu...");
+                    edit();
+                }
 
                 add(true,r);
                 System.out.println("\n...New row " + r + " inserted...\n" + this);
@@ -254,8 +279,13 @@ public class Spreadsheet {
                 System.out.print(s);
                 c = Keyboard.readInt();
 
+                if  (c > numCols || c < 1) {
+                    System.out.println("Error: Invalid input for index. Returning to to the previous menu...");
+                    edit();
+                }
+
                 add(false,c);
-                System.out.println("\nNew column " + c + " inserted...\n" + this);
+                System.out.println("\n...New column " + c + " inserted...\n" + this);
                 filler(false,c);
 
                 edit();
@@ -268,9 +298,13 @@ public class Spreadsheet {
                 System.out.print(s);
                 r = Keyboard.readInt();
 
+                if  (r >= numRows || r < 1) {
+                    System.out.println("Error: Invalid input for index. Returning to to the previous menu...");
+                    edit();
+                }
+
                 remove(true,r);
-                System.out.println("\n...Fisplaying updated table...\n" + this);
-                filler(true,r);
+                System.out.println("\n...Displaying updated table...\n" + this);
 
                 edit();
             }
@@ -282,9 +316,13 @@ public class Spreadsheet {
                 System.out.print(s);
                 c = Keyboard.readInt();
 
+                if  (c >= numCols || c < 1) {
+                    System.out.println("Error: Invalid input for index. Returning to to the previous menu...");
+                    edit();
+                }
+
                 remove(false,c);
                 System.out.println("\n...Displaying updated table...\n" + this);
-                filler(false,c);
 
                 edit();
             }
@@ -307,6 +345,11 @@ public class Spreadsheet {
                     System.out.print(s);
                     r = Keyboard.readInt();
 
+                    if  (r >= numRows || r < 1) {
+                        System.out.println("Error: Invalid input for index. Returning to to the previous menu...");
+                        edit();
+                    }
+
                     double[] temp = new double[numCols - 1];
                     for (int i = 1 ; i < numCols; i++) {
                         temp[i - 1] = (double)_table[r][i];
@@ -326,6 +369,11 @@ public class Spreadsheet {
                     s += "]\n\tSpecify column number: ";
                     System.out.print(s);
                     c = Keyboard.readInt();
+
+                    if  (c >= numCols || c < 1) {
+                        System.out.println("Error: Invalid input for index. Returning to to the previous menu...");
+                        edit();
+                    }
 
                     double[] temp = new double[numRows - 1];
                     for (int i = 1 ; i < numRows; i++) {
@@ -359,11 +407,15 @@ public class Spreadsheet {
                             placeholder++;
                         }
                     }
+
+                    System.out.println("...Displaying sorted table...\n" + this);
+
+                    edit();
                 }
 
                 //Error message for invalid inputs
                 else {
-                    System.out.println("Your selection is not an option. Returning to the previous menu.");
+                    System.out.println("Your selection is not an option. Returning to the previous menu...");
                     edit();
                 }
             }
@@ -411,7 +463,7 @@ public class Spreadsheet {
             System.out.print(s);
             input = Keyboard.readInt();
 
-            if (!(input == 4 || input == 5)) {
+            if (input == 1 || input == 2 || input == 3) {
             s = "\nCalulate statistics on...\n";
             s += "\t1: a specified row\n";
             s += "\t2: a specified column\n";
@@ -428,14 +480,14 @@ public class Spreadsheet {
                 index = Keyboard.readInt();
                 calcRow = true;
 
-                if (index >= numRows) {
-                    System.out.println("Error: Invalid input for index. Returning to to the previous menu.");
+                if (index >= numRows || index < 1) {
+                    System.out.println("Error: Invalid input for index. Returning to to the previous menu...");
                     statistics();
                 }
 
                 for (int i = 1; i < numCols; i++) {
                     if (_table[index][i] instanceof String) {
-                        System.out.println("Error: Invalid data type in selected row.  Returning to the previous menu.");
+                        System.out.println("Error: Invalid data type in selected row.  Returning to the previous menu...");
                         statistics();
                     }
                 }
@@ -448,14 +500,14 @@ public class Spreadsheet {
                 index = Keyboard.readInt();
                 calcRow = false;
 
-                if (index >= numCols) {
-                    System.out.println("Error: Invalid input for index. Returning to to the previous menu.");
+                if (index >= numCols || index < 1) {
+                    System.out.println("Error: Invalid input for index. Returning to to the previous menu...");
                     statistics();
                 }
 
                 for (int i = 1; i < numRows; i++) {
                     if (_table[i][index] instanceof String) {
-                        System.out.println("Error: Invalid data type in selected column.  Returning to the previous menu.");
+                        System.out.println("Error: Invalid data type in selected column.  Returning to the previous menu...");
                         statistics();
                     }
                 }
@@ -468,14 +520,20 @@ public class Spreadsheet {
                 for (int i = 1; i < numRows; i++) {
                     for (int j = 1; j < numCols; j++) {
                         if (_table[i][j] instanceof String) {
-                        System.out.println("Error: Invalid data type in the table.  Returning to the previous menu.");
+                        System.out.println("Error: Invalid data type in the table.  Returning to the previous menu...");
                         statistics();
                         }
                     }
                 }
             }
 
-        //---------------------------
+            //error message for invalid input for input2
+            else {
+                System.out.println("Your selection is not an option. Returning to the previous menu...");
+                edit();
+            }
+
+        //----------------------------------
             //Calculating the mean
             if (input == 1) {
                 if (calcAll) {
@@ -526,6 +584,10 @@ public class Spreadsheet {
             }
     }
 
+    //===================================
+    //        ~HELPER FUNCTIONS~
+    //===================================
+
     //Sets (r,c) to newVal
     public Comparable set(int r, int c, Comparable newVal) {
         Comparable retVal = _table[r][c];
@@ -546,17 +608,17 @@ public class Spreadsheet {
     public void remove(boolean removeRow, int index) {
         Comparable[][] temp;
         if (removeRow) {  
-            //Removing arow 
+            //Removing a row 
             numRows--;
             temp = new Comparable[numRows][numCols];
-            for (int i = numRows - 1; i > index; i--) {
+            for (int i = 1; i < index; i++) {
                 for (int j = 1; j < numCols; j++) {
-                    temp[i-2][j] = _table[i-1][j]; 
-                } 
+                    temp[i][j] = _table[i][j]; 
+                }
             }
-            for (int i = index - 1; i > 0; i--) {
+            for (int i = index; i < numRows; i++) {
                 for (int j = 1; j < numCols; j++) {
-                    temp[i][j] = _table[i][j];
+                    temp[i][j] = _table[i + 1][j];
                 }
             }
         }
@@ -564,14 +626,14 @@ public class Spreadsheet {
             //Removing a column
             numCols--;
             temp = new Comparable[numRows][numCols];
-            for (int i = numCols - 1; i > index; i--) {
-                for (int j = 1; j < numRows; j++) {
-                    temp[j-2][i] = _table[j][i-1];
-                }
-            }
-            for (int i = index - 1; i > 0; i--) {
+            for (int i = 1; i < index; i++) {
                 for (int j = 1; j < numRows; j++) {
                     temp[j][i] = _table[j][i];
+                }
+            }
+            for (int i = index; i < numCols; i++) {
+                for (int j = 1; j < numRows; j++) {
+                    temp[j][i] = _table[j][i + 1];
                 }
             }
         }

@@ -131,7 +131,7 @@ public class Parser {
 	return eval( calcd);
     }//end input(String eq, int xval)
 
-	//sorts a String input into a int, double, or String output
+	//sorts a String input into a int, double, o  tqaar String output
 	public static Comparable input() {
 		String in;
 		Comparable output;
@@ -142,7 +142,12 @@ public class Parser {
             output = (int) Integer.parseInt(in);
         }
         catch (Exception e) { 
-            output = (double) Double.parseDouble(in);
+            try {
+				output = (double) Double.parseDouble(in);
+			}
+			catch (Exception elephant) {
+				output = in;
+			}
         }
 		return output;
 	}
