@@ -17,7 +17,6 @@ _**Instructions for Running**_
 
 To COMPILE
 ~~~~
-$ cd ~/gwuacamohli/codes
 $ javac Woo.java
 ~~~~
 To RUN
