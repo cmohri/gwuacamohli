@@ -18,7 +18,7 @@ UNRESOLVED ISSUES
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- 
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -131,4 +131,12 @@ Wenting :: Completed code for calculating statistics in mean(), median(), mode()
 	   Spreadsheet is now a working file with each method completely. Now awaiting more testing...
 Jessica :: Added try/catch block to deal with invalid math expressions. Wrote while loop in case user attempts to select an invalid option (input a number other than 1 or 2). However, still need to figure out what to do if user tries to input something other than an int (the Error reading int data, MIN_VALUE value returned. error).
 
+==============================================================
+
+
+2018-01-16
+--------------------------------------------------------------
+Clara :: Worked on making code more robust, updated toString() method for Spreadsheet
+Wenting :: 
+Jessica :: 
 ==============================================================
