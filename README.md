@@ -30,13 +30,13 @@ $ java Woo
 	2: Simple Math Calculator
 	3: Spreadsheet
 2. Follow instructions in shell…
-   * Grapher....
-        i) Input a polynomial equation in the form ax^n + bx^n-1 + ...
-	   (ex. 3x^2 + 2x - 1)
-	NOTE: x should be the only variable inputted
-	ii) A graph generated from the equation will be displayed. User can then select to modify the preset domain and range for the graph by typing "edit domain" or "edit range" in shell.
-	iii) User can request a table for the equation in the viewing window by typing "table" in the shell.
-	iv) Users can request zeroes, y-intecepts, and slope by selecting from a list.
+   * **Grapher**....
+   *Input a polynomial equation in the form ax^n + bx^n-1 + ...(ex. 3x^2 + 2x - 1)
+   NOTE: x should be the only variable inputted
+   A graph generated from the equation will be displayed. User can then select to modify the preset domain and range for the
+   graph by typing "edit domain" or "edit range" in shell.
+   * User can request a table for the equation in the viewing window by typing "table" in the shell.
+   * Users can request zeroes, y-intecepts, and slope by selecting from a list.
 
    * Calculator....
 	i) Input an expression as one would enter on a simple scientific calculator in the order user would like.
