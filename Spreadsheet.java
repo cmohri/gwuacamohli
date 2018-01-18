@@ -609,7 +609,7 @@ public class Spreadsheet {
                     System.out.println( "Calculated mode:  " + mode() ); //the entire table
                 }
                 else System.out.println( "Calculated mode:  " + mode(calcRow,index) ); //the specified row/column
-                System.out.println("\nCurrent table:" + this);
+                System.out.println("\nCurrent table:\n" + this);
                 statistics();
             }
 
